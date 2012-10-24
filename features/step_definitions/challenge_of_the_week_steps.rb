@@ -15,5 +15,6 @@ Then /^I should see the challenge$/ do
 end
 
 Then /^I should see the edited challenge$/ do
-  @app.shows_challenge_changed(@data_store.current_challenge)
+  @app.shows_success_message('challenge successfully updated')
+  @app.shows_challenge(@data_store.current_challenge)
 end
