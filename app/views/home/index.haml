@@ -9,3 +9,9 @@
 %h3 Current Entries
 - @entries.each do |entry|
   %p= entry
+
+%h3 Add an entry!
+= form_tag('/entries', :method => 'post') do
+  = label_tag(:entry)
+  = text_field_tag(:entry)
+  = submit_tag('Submit')

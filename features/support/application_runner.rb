@@ -35,4 +35,13 @@ class ApplicationRunner
       @driver.page.should have_content(entry)
     end
   end
+
+  def submit_challenge_entry(entry)
+    @driver.fill_in('entry', :with => entry)
+    @driver.click_on('Submit') 
+  end
+
+  def shows_success_message(msg)
+    @driver.page.should have_content(msg)
+  end
 end

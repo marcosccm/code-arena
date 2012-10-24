@@ -1,9 +1,14 @@
 class ChallengeEntries
-  def self.submit(entries)
-    @current = entries
+  
+  def self.submit(new_entries)
+    entries + Array(new_entries)
   end
 
   def self.current
-    @current || []
+    entries
+  end
+
+  def self.entries 
+    @entries ||= []
   end
 end

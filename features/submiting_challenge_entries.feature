@@ -8,3 +8,9 @@ Feature: Submiting challenge entries
     And many entries for that challenge
     When I go to the home page
     Then I should see the current entries
+
+  Scenario: Posting a challenge entry
+    Given a current challenge
+    When I go to the home page
+    And I post a challenge entry
+    Then I should see my challenge entry
