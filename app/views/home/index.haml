@@ -1,2 +1,7 @@
 %h1 Challenge of the Week
-%h2= @challenge
+%h2= flash[:notice]
+
+= form_tag('/challenge', :method => 'put') do
+  = label_tag(:content, 'Content')
+  = text_field_tag(:content, @challenge)
+  = submit_tag('Edit')

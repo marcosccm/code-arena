@@ -7,3 +7,9 @@ Feature: Challenge of the week
     Given a current challenge
     When I go to the home page
     Then I should see the challenge
+
+  Scenario: Editing current challenge
+    Given a current challenge
+    When I go to the home page
+    And  I edit the current challenge
+    Then I should see the edited challenge

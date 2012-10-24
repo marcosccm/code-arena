@@ -17,6 +17,16 @@ class ApplicationRunner
   end
 
   def shows_challenge(challenge)
-    @driver.page.should have_content(challenge)
+    @driver.page.find('input#content')['value'].should == challenge
+  end
+
+  def shows_challenge_changed(challenge)
+    shows_challenge(challenge)
+    @driver.page.should have_content('challenge successfully updated')
+  end
+
+  def edit_challenge_content(content)
+    @driver.fill_in('content', :with => content)
+    @driver.click_on('Edit') 
   end
 end

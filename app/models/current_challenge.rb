@@ -3,7 +3,11 @@ class CurrentChallenge
     @text = text
   end
 
+  def self.update(text)
+    @text = text
+  end
+
   def self.current
-    @text
+    @text || 'default'
   end
 end
