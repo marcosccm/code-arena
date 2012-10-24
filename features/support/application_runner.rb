@@ -29,4 +29,10 @@ class ApplicationRunner
     @driver.fill_in('content', :with => content)
     @driver.click_on('Edit') 
   end
+
+  def shows_challenge_entries(entries)
+    entries.each do |entry|
+      @driver.page.should have_content(entry)
+    end
+  end
 end

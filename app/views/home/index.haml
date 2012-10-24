@@ -5,3 +5,7 @@
   = label_tag(:content, 'Content')
   = text_field_tag(:content, @challenge)
   = submit_tag('Edit')
+
+%h3 Current Entries
+- @entries.each do |entry|
+  %p= entry
