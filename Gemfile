@@ -20,10 +20,12 @@ end
 
 gem 'jquery-rails'
 
-group :test do
+group :test, :development do
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'jasmine'
+  gem 'jasmine-headless-webkit'
 end
 
 # To use ActiveModel has_secure_password
