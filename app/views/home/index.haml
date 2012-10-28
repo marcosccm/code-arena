@@ -1,17 +1,19 @@
-%h1 Challenge of the Week
-%h2= flash[:notice]
+%div{ 'ng-controller' => 'EntryListCrtl' }
+  %h1 Challenge of the Week
+  %h2= flash[:notice]
 
-= form_tag('/challenge', :method => 'put') do
-  = label_tag(:content, 'Content')
-  = text_field_tag(:content, @challenge)
-  = submit_tag('Edit')
+  = form_tag('/challenge', :method => 'put') do
+    = label_tag(:content, 'Content')
+    = text_field_tag(:content, @challenge)
+    = submit_tag('Edit')
 
-%h3 Current Entries
-- @entries.each do |entry|
-  %p= entry
+  %h3 Current Entries
+  %ul
+    %li{ 'ng-repeat' => 'entry in entries' }
+      %p {{ entry.title }}
 
-%h3 Add an entry!
-= form_tag('/entries', :method => 'post') do
-  = label_tag(:entry)
-  = text_field_tag(:entry)
-  = submit_tag('Submit')
+  %h3 Add an entry!
+  = form_tag('/entries', :method => 'post') do
+    = label_tag(:entry)
+    = text_field_tag(:entry)
+    = submit_tag('Submit')
