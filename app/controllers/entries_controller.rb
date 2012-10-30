@@ -6,10 +6,10 @@ class EntriesController < ApplicationController
   end
 
   def create
-    SubmitEntries.new(params[:entries], ChallengeEntries, self).run
+    SubmitEntries.new(params[:entry], ChallengeEntries, self).run
   end
 
   def entry_submited
-    redirect_to root_path, :notice => 'entry submited successfully'
+    render :json => { 'message' => 'entry submited successfully' }
   end
 end

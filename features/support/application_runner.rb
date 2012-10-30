@@ -63,7 +63,7 @@ class EntriesRunner
   end
 
   def submit_challenge_entry(entry)
-    @driver.fill_in('entry', :with => entry)
+    @driver.fill_in('title', :with => entry)
     @driver.click_on('Submit') 
   end
 end

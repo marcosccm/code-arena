@@ -1,6 +1,7 @@
 %div{ 'ng-controller' => 'EntryListCrtl' }
   %h1 Challenge of the Week
-  %h2= flash[:notice]
+  %div= flash[:notice]
+  %div{ 'ng-bind-template' => '{{message}}' }
 
   = form_tag('/challenge', :method => 'put') do
     = label_tag(:content, 'Content')
@@ -13,7 +14,7 @@
       %p {{ entry.title }}
 
   %h3 Add an entry!
-  = form_tag('/entries', :method => 'post') do
-    = label_tag(:entry)
-    = text_field_tag(:entry)
-    = submit_tag('Submit')
+  %form
+    %label Title
+    %input{ :type => 'text', :id => 'title', 'ng-model' => 'entry.title' }
+    %input{ :type => 'submit', :value => 'Submit', 'ng-click' => 'submit()' }
