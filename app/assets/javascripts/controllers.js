@@ -1,5 +1,3 @@
-function EntryListCrtl($scope, $http) {
-  $http.get('/entries').success(function(data) {
-    $scope.entries = data
-  });
+function EntryListCrtl($scope, Entry) {
+  $scope.entries = Entry.query();
 }
