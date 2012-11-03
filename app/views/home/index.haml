@@ -1,4 +1,4 @@
-%div{ 'ng-controller' => 'EntryListCrtl' }
+%div{ 'ng-controller' => 'NotificationCrtl' }
   %h1 Challenge of the Week
   %div= flash[:notice]
   %div{ 'ng-bind-template' => '{{message}}' }
@@ -8,6 +8,7 @@
     = text_field_tag(:content, @challenge)
     = submit_tag('Edit')
 
+%div{ 'ng-controller' => 'EntryListCrtl' }
   %h3 Current Entries
   %ul
     %li{ 'ng-repeat' => 'entry in entries' }
