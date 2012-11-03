@@ -2,7 +2,8 @@ require_relative 'fake_data_store'
 require_relative 'application_runner'
 require 'cucumber/rails'
 
-Capybara.default_selector = :css
+Capybara.default_selector  = :css
+Capybara.javascript_driver = :webkit
 
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
