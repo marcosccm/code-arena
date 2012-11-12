@@ -4,6 +4,10 @@ function NotificationCrtl($scope, notificationCenter) {
   });
 }
 
+function CurrentChallengeCrtl($scope, challengeApi, notificationCenter) {
+  $scope.challenge = challengeApi.query();
+
+}
 function EntryListCrtl($scope, entryApi, notificationCenter) {
   $scope.entries = entryApi.query();
 

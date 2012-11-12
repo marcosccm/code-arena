@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   respond_to :json
+
   def index
     entries = ChallengeEntries.current
     render :json => entries

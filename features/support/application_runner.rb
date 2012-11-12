@@ -39,7 +39,7 @@ class ChallengeRunner
   end
 
   def shows_challenge(challenge)
-    @driver.page.find('input#content')['value'].should == challenge
+    @driver.page.find('input#content').value.should == challenge[:content]
   end
 
   def edit_challenge(content)

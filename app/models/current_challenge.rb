@@ -8,6 +8,7 @@ class CurrentChallenge
   end
 
   def self.current
-    @text || 'default'
+    @text ||= 'default'
+    { content: @text }
   end
 end

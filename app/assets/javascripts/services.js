@@ -17,7 +17,14 @@ function EntryApi($resource) {
   });
 };
 
+function ChallengeApi($resource) {
+  return $resource('challenge', {}, {
+    query: { method: 'GET' }
+  });
+};
+
 
 angular.module('entryService', ['ngResource'])
        .factory('entryApi', EntryApi)
+       .factory('challengeApi', ChallengeApi)
        .factory('notificationCenter', NotificationCenter);

@@ -3,10 +3,11 @@
   %div= flash[:notice]
   %div{ 'ng-bind-template' => '{{message}}' }
 
-  = form_tag('/challenge', :method => 'put') do
-    = label_tag(:content, 'Content')
-    = text_field_tag(:content, @challenge)
-    = submit_tag('Edit')
+%div{ 'ng-controller' => 'CurrentChallengeCrtl' }
+  %form
+    %label Content
+    %input{ :type => 'content', :id => 'content', 'ng-model' => 'challenge.content' }
+    %input{ :type => 'submit', :value => 'Edit', 'ng-click' => 'edit()' }
 
 %div{ 'ng-controller' => 'EntryListCrtl' }
   %h3 Current Entries
