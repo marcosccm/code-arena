@@ -19,7 +19,8 @@ function EntryApi($resource) {
 
 function ChallengeApi($resource) {
   return $resource('challenge', {}, {
-    query: { method: 'GET' }
+    query:  { method: 'GET' },
+    update: { method: 'PUT' }
   });
 };
 

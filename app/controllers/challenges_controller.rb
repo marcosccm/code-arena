@@ -11,6 +11,6 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_updated
-    redirect_to root_path, :notice => 'challenge successfully updated'
+    render :json => { 'message' => 'challenge successfully updated' }
   end
 end

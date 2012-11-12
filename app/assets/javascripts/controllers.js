@@ -7,7 +7,14 @@ function NotificationCrtl($scope, notificationCenter) {
 function CurrentChallengeCrtl($scope, challengeApi, notificationCenter) {
   $scope.challenge = challengeApi.query();
 
+  $scope.edit = function(){
+    challengeApi.update($scope.challenge, function(resp){
+      $scope.challenge = challengeApi.query();
+      notificationCenter.broadcast(resp.message);
+    });
+  };
 }
+
 function EntryListCrtl($scope, entryApi, notificationCenter) {
   $scope.entries = entryApi.query();
 

@@ -9,7 +9,7 @@ Feature: Challenge of the week
     When I go to the home page
     Then I should see the challenge
 
-  @wip
+  @javascript
   Scenario: Editing current challenge
     Given a current challenge
     When I go to the home page
