@@ -1,13 +1,8 @@
 %div{ 'ng-controller' => 'NotificationCrtl' }
-  %h1 Challenge of the Week
-  %div= flash[:notice]
   %div{ 'ng-bind-template' => '{{message}}' }
 
-%div{ 'ng-controller' => 'CurrentChallengeCrtl' }
-  %form
-    %label Content
-    %input{ :type => 'content', :id => 'content', 'ng-model' => 'challenge.content' }
-    %input{ :type => 'submit', :value => 'Edit', 'ng-click' => 'edit()' }
+%h1 Challenge of the Week
+%div{ 'ng-view' => '' }
 
 %div{ 'ng-controller' => 'EntryListCrtl' }
   %h3 Current Entries
@@ -20,3 +15,16 @@
     %label Title
     %input{ :type => 'text', :id => 'title', 'ng-model' => 'entry.title' }
     %input{ :type => 'submit', :value => 'Submit', 'ng-click' => 'submit()' }
+
+%script{ :type => 'text/ng-template', :id => 'current_challenge.html' }
+  %h2 {{challenge.title}}
+  %p  {{challenge.content}}
+  %a{ :href => '#/edit' } Edit
+
+%script{ :type => 'text/ng-template', :id => 'edit_challenge.html' }
+  %form
+    %label Title
+    %input{ :type => 'text', :id => 'title', 'ng-model' => 'challenge.title' }
+    %label Content
+    %input{ :type => 'text', :id => 'content', 'ng-model' => 'challenge.content' }
+    %input{ :type => 'submit', :value => 'Save', 'ng-click' => 'edit()' }

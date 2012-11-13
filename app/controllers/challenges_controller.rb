@@ -7,7 +7,7 @@ class ChallengesController < ApplicationController
   end
 
   def update
-    UpdateChallenges.new(params[:content], CurrentChallenge, self).run
+    UpdateChallenges.new(params[:challenge], CurrentChallenge, self).run
   end
 
   def challenge_updated

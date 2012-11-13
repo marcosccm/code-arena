@@ -3,7 +3,7 @@ require_relative 'application_runner'
 require 'cucumber/rails'
 
 Capybara.default_selector  = :css
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :selenium
 
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation

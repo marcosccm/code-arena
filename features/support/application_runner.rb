@@ -39,12 +39,15 @@ class ChallengeRunner
   end
 
   def shows_challenge(challenge)
-    @driver.page.find('input#content').value.should == challenge[:content]
+    @driver.page.should have_content challenge[:title]
+    @driver.page.should have_content challenge[:content]
   end
 
-  def edit_challenge(content)
-    @driver.fill_in('content', :with => content)
+  def edit_challenge(title, content)
     @driver.click_on('Edit') 
+    @driver.fill_in('title',   :with => title)
+    @driver.fill_in('content', :with => content)
+    @driver.click_on('Save') 
   end
 end
 

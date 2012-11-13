@@ -3,7 +3,7 @@ require_relative '../../app/models/challenge_entries'
 
 class FakeDataStore
   def set_current_challenge
-    CurrentChallenge.setup('maior tenso')
+    CurrentChallenge.setup('maior tenso', 'muita tensao com essa turminha')
   end
 
   def current_challenge

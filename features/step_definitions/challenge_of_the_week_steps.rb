@@ -7,7 +7,7 @@ When /^I go to the home page$/ do
 end
 
 When /^I edit the current challenge$/ do
-  @app.edit_challenge('mais maneiro')
+  @app.edit_challenge('mais maneiro', 'esse desafio mudou!')
 end
 
 Then /^I should see the challenge$/ do
