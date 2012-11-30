@@ -1,30 +1,34 @@
 %div{ 'ng-controller' => 'NotificationCrtl' }
   %div{ 'ng-bind-template' => '{{message}}' }
 
-%h1 Challenge of the Week
-%div{ 'ng-view' => '' }
+%section#challenge-week
+  %article{ 'ng-view' => '' }
 
-%div{ 'ng-controller' => 'EntryListCrtl' }
-  %h3 Current Entries
-  %ul
-    %li{ 'ng-repeat' => 'entry in entries' }
+%section#current-entries{ 'ng-controller' => 'EntryListCrtl' }
+  %header
+    %h3 Current Entries
+  %section
+    %article{ 'ng-repeat' => 'entry in entries' }
       %p {{ entry.title }}
 
-  %h3 Add an entry!
-  %form
-    %label Title
-    %input{ :type => 'text', :id => 'title', 'ng-model' => 'entry.title' }
-    %input{ :type => 'submit', :value => 'Submit', 'ng-click' => 'submit()' }
+  %section#add-challenge
+    %header
+      %h3 Add an entry!
+    %section
+      %form.form-inline
+        %input{ :type => 'text', :placeholder => 'Title', :id => 'title', 'ng-model' => 'entry.title' }
+        %button.btn{ :type => 'submit', 'ng-click' => 'submit()' } Submit
 
-%script{ :type => 'text/ng-template', :id => 'current_challenge.html' }
-  %h2 {{challenge.title}}
-  %p  {{challenge.content}}
-  %a{ :href => '#/edit' } Edit
+  %script{ :type => 'text/ng-template', :id => 'current_challenge.html' }
+    %header
+      %h3 Challenge of the Week
+      %h2 {{challenge.title}}
+    %section
+      %p  {{challenge.content}}
+      %a{ :href => '#/edit' } Edit
 
-%script{ :type => 'text/ng-template', :id => 'edit_challenge.html' }
-  %form
-    %label Title
-    %input{ :type => 'text', :id => 'title', 'ng-model' => 'challenge.title' }
-    %label Content
-    %input{ :type => 'text', :id => 'content', 'ng-model' => 'challenge.content' }
-    %input{ :type => 'submit', :value => 'Save', 'ng-click' => 'edit()' }
+  %script{ :type => 'text/ng-template', :id => 'edit_challenge.html' }
+    %form
+      %input{ :type => 'text', :id => 'title', 'ng-model' => 'challenge.title' }
+      %input{ :type => 'text', :id => 'content', 'ng-model' => 'challenge.content' }
+      %button.btn{ :type => 'submit', 'ng-click' => 'edit()' } Save
