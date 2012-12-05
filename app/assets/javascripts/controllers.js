@@ -30,6 +30,9 @@ function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location){
       $location.path('/');
     });
   };
+  $scope.cancel = function(){
+    $location.path('/');
+  };
 }
 
 function EntryListCrtl($scope, entryApi) {

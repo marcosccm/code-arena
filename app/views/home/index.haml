@@ -36,4 +36,6 @@
     %section
       %form.form-inline
         %input{ :type => 'text', :placeholder => 'Title', :id => 'title', 'ng-model' => 'entry.title' }
-        %button.btn{ :type => 'submit', 'ng-click' => 'submit()' } Submit
+      .form-actions
+        %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'submit()' } Submit
+        %button.btn{ :type => 'submit', 'ng-click' => 'cancel()' } Cancel

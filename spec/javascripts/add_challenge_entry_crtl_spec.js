@@ -29,4 +29,12 @@ describe('AddChallengeEntryCrtl', function(){
       expect(location.path).toHaveBeenCalledWith('/');
     });
   });
+
+  describe('canceling the add action', function(){
+    it('redirects to the index page', function(){
+      spyOn(location, 'path')
+      scope.cancel();
+      expect(location.path).toHaveBeenCalledWith('/');
+    });
+  });
 });
