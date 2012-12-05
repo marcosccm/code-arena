@@ -18,6 +18,10 @@ function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) 
       $location.path('/');
     });
   };
+
+  $scope.cancel = function(){
+    $location.path('/');
+  };
 }
 function EntryListCrtl($scope, entryApi, notificationCenter) {
   $scope.entries = entryApi.query();

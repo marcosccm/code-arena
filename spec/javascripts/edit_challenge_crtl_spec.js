@@ -11,7 +11,6 @@ describe('EditChallengeCrtl', function(){
     location = {
       path: function(){}
     }
-    spyOn(location, 'path')
     challenge = 'challenge'
     crtl  = new EditChallengeCrtl(scope, challengeApi, notificationCenter, location);
   })
@@ -39,6 +38,20 @@ describe('EditChallengeCrtl', function(){
       spyOn(notificationCenter, 'broadcast')
       scope.edit();
       expect(notificationCenter.broadcast).toHaveBeenCalled();
+    });
+
+    it('redirects to the index page', function(){
+      spyOn(location, 'path')
+      scope.edit();
+      expect(location.path).toHaveBeenCalledWith('/');
+    });
+  });
+
+  describe('canceling edit action', function(){
+    it('redirects to the index page', function(){
+      spyOn(location, 'path')
+      scope.cancel();
+      expect(location.path).toHaveBeenCalledWith('/');
     });
   });
 });
