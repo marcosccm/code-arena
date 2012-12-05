@@ -28,12 +28,6 @@ describe('EditChallengeCrtl', function(){
       expect(challengeApi.update).toHaveBeenCalled();
     });
 
-    it('reloads the challenge content', function(){
-      spyOn(challengeApi, 'query').andReturn('new challenge')
-      scope.edit();
-      expect(scope.challenge).toEqual('new challenge');
-    });
-
     it('broadcasts server response message', function(){
       spyOn(notificationCenter, 'broadcast')
       scope.edit();

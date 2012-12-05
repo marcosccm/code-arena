@@ -4,7 +4,6 @@
 %section#challenge-week
   %article{ 'ng-view' => '' }
 
-
 %script{ :type => 'text/ng-template', :id => 'current_challenge.html' }
   %header
     %h3 Challenge of the Week
@@ -18,14 +17,7 @@
     %section
       %article{ 'ng-repeat' => 'entry in entries' }
         %p {{ entry.title }}
-
-    %section#add-challenge
-      %header
-        %h3 Add an entry!
-      %section
-        %form.form-inline
-          %input{ :type => 'text', :placeholder => 'Title', :id => 'title', 'ng-model' => 'entry.title' }
-          %button.btn{ :type => 'submit', 'ng-click' => 'submit()' } Submit
+      %a{ :href => '#/new' } Add Your Entry!
 
 %script{ :type => 'text/ng-template', :id => 'edit_challenge.html' }
   %form
@@ -36,3 +28,12 @@
     .form-actions
       %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'edit()' } Save
       %button.btn{ :type => 'submit', 'ng-click' => 'cancel()' } Cancel
+
+%script{ :type => 'text/ng-template', :id => 'add_challenge_entry.html' }
+  %section#add-challenge
+    %header
+      %h3 Add an entry!
+    %section
+      %form.form-inline
+        %input{ :type => 'text', :placeholder => 'Title', :id => 'title', 'ng-model' => 'entry.title' }
+        %button.btn{ :type => 'submit', 'ng-click' => 'submit()' } Submit

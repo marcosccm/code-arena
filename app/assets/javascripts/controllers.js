@@ -13,7 +13,6 @@ function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) 
 
   $scope.edit = function(){
     challengeApi.update($scope.challenge, function(resp){
-      $scope.challenge = challengeApi.query();
       notificationCenter.broadcast(resp.message);
       $location.path('/');
     });
@@ -23,14 +22,16 @@ function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) 
     $location.path('/');
   };
 }
-function EntryListCrtl($scope, entryApi, notificationCenter) {
-  $scope.entries = entryApi.query();
 
+function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location){
   $scope.submit = function(){
     entryApi.save($scope.entry, function(resp){
-      $scope.entries = entryApi.query();
       notificationCenter.broadcast(resp.message);
+      $location.path('/');
     });
   };
 }
 
+function EntryListCrtl($scope, entryApi) {
+  $scope.entries = entryApi.query();
+}
