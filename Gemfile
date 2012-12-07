@@ -19,6 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'pygments.rb'
 
 group :test, :development do
   gem 'cucumber-rails'
