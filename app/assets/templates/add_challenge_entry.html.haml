@@ -1,0 +1,17 @@
+%section#add-challenge
+  %header
+    %h3 Add an entry!
+  %section
+    %form
+      %label{ :for => 'description' } Description
+      %input{ :type => 'text', :placeholder => 'Description', :id => 'description', 'ng-model' => 'entry.title' }
+      %label{ :for => 'language' } Language
+      %select{ :name => 'language' }
+        - Pygments.lexers.keys.each do |lexer|
+          %option= lexer
+      %label{ :for => 'content' } Content
+      %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'challenge.content' }
+
+    .form-actions
+      %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'submit()' } Submit
+      %button.btn{ :type => 'submit', 'ng-click' => 'cancel()' } Cancel

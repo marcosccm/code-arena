@@ -1,0 +1,8 @@
+%form
+  %label{ :for => 'title' } Title
+  %input{ :type => 'text', :name => 'title', 'ng-model' => 'challenge.title' }
+  %label{ :for => 'content' } Content
+  %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'challenge.content' }
+  .form-actions
+    %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'edit()' } Save
+    %button.btn{ :type => 'submit', 'ng-click' => 'cancel()' } Cancel

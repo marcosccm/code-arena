@@ -1,0 +1,15 @@
+angular.module('codearena',['entryService']).config(function($routeProvider){
+  $routeProvider
+  .when('/', { 
+    controller: CurrentChallengeCrtl, 
+    templateUrl: '<%= asset_path('current_challenge.html') %>'
+  })
+  .when('/edit', { 
+    controller: EditChallengeCrtl, 
+    templateUrl: '<%= asset_path('edit_challenge.html') %>'
+  })
+  .when('/new', { 
+    controller: AddChallengeEntryCrtl, 
+    templateUrl: '<%= asset_path('add_challenge_entry.html') %>'
+  });
+});

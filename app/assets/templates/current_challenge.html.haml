@@ -1,0 +1,13 @@
+%header
+  %h3 Challenge of the Week
+  %h2 {{challenge.title}}
+%section
+  %p  {{challenge.content}}
+  %a{ :href => '#/edit' } Edit
+%section#current-entries{ 'ng-controller' => 'EntryListCrtl' }
+  %header
+    %h3 Current Entries
+  %section
+    %article{ 'ng-repeat' => 'entry in entries' }
+      %p {{ entry.title }}
+    %a{ :href => '#/new' } Add Your Entry!
