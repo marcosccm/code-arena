@@ -4,13 +4,13 @@
   %section
     %form
       %label{ :for => 'description' } Description
-      %input{ :type => 'text', :placeholder => 'Description', :id => 'description', 'ng-model' => 'entry.title' }
+      %input{ :type => 'text', :placeholder => 'Description', :id => 'description', 'ng-model' => 'entry.description' }
       %label{ :for => 'language' } Language
-      %select{ :name => 'language' }
+      %select{ :name => 'language', 'ng-model' => 'entry.language' }
         - Pygments.lexers.keys.each do |lexer|
           %option= lexer
       %label{ :for => 'content' } Content
-      %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'challenge.content' }
+      %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'entry.content' }
 
     .form-actions
       %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'submit()' } Submit

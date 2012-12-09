@@ -11,7 +11,7 @@ class FakeDataStore
   end
 
   def set_current_entries(entries)
-    ChallengeEntries.submit(entries)
+    entries.each { |entry| ChallengeEntries.submit(entry) }
   end
 
   def current_entries

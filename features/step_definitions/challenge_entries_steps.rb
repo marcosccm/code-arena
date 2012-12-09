@@ -1,5 +1,10 @@
 Given /^many entries for that challenge$/ do
-  entries = %w{entry1 entry2 entry3}
+  entries = [
+    { description: 'entry1', language: 'Ruby', content: 'bla' },
+    { description: 'entry2', language: 'Python', content: 'bla' },
+    { description: 'entry3', language: 'Java', content: 'bla' }
+  ] 
+
   @data_store.set_current_entries(entries)
 end
 
@@ -8,7 +13,11 @@ Then /^I should see the current entries$/ do
 end
 
 When /^I post a challenge entry$/ do
-  @app.submit_challenge_entry('entry 4')
+  @app.submit_challenge_entry(
+    description: 'entry 4',
+    language:    'Ruby',
+    content:     'content'
+  )
 end
 
 Then /^I should see my challenge entry$/ do

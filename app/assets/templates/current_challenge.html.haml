@@ -9,5 +9,5 @@
     %h3 Current Entries
   %section
     %article{ 'ng-repeat' => 'entry in entries' }
-      %p {{ entry.title }}
+      %p {{ entry.description }} {{ entry.language }} {{ entry.content }}
     %a{ :href => '#/new' } Add Your Entry!

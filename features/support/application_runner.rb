@@ -61,13 +61,17 @@ class EntriesRunner
   def shows_challenge_entries(entries)
     entries.count.should > 0
     entries.each do |entry|
-      @driver.page.should have_content(entry[:title])
+      @driver.page.should have_content entry[:description]
+      @driver.page.should have_content entry[:language]
+      @driver.page.should have_content entry[:content]
     end
   end
 
   def submit_challenge_entry(entry)
     @driver.click_on('Add Your Entry!') 
-    @driver.fill_in('title', :with => entry)
+    @driver.fill_in('description', :with => entry[:description])
+    @driver.select(entry[:language], :from => 'language')
+    @driver.fill_in('content', :with => entry[:content])
     @driver.click_on('Submit') 
   end
 end

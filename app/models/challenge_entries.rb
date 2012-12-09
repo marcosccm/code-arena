@@ -1,13 +1,19 @@
 class ChallengeEntries
-  def self.submit(new_entries)
-    @entries = entries + Array(new_entries)
+  def self.submit(entry_data)
+    entries << ChallengeEntry.new(entry_data[:description], entry_data[:language], entry_data[:content])
   end
 
   def self.current
-    entries.map { |entry| { title: entry }}
+    entries.map(&:as_hash)
   end
 
   def self.entries 
-    @entries ||= %w{bla1 bla2 bla3}
+    @entries ||= [] 
+  end
+end
+
+class ChallengeEntry < Struct.new(:description, :language, :content)
+  def as_hash
+    { description: description, language: language, content: content }
   end
 end

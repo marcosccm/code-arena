@@ -9,7 +9,7 @@ describe SubmitEntries do
 
   context 'with a valid entry' do
     it 'submits the entry' do
-      entries.should_receive(:submit).with(entry['title'])
+      entries.should_receive(:submit).with(entry)
       ui.should_receive(:entry_submited) 
       submitter.run
     end
