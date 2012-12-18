@@ -7,8 +7,10 @@
       %input{ :type => 'text', :placeholder => 'Description', :id => 'description', 'ng-model' => 'entry.description' }
       %label{ :for => 'language' } Language
       %select{ :name => 'language', 'ng-model' => 'entry.language' }
-        - Pygments.lexers.keys.each do |lexer|
-          %option= lexer
+        %option{ :value => '', :disabled => 'disabled' }
+          Select the programming language... 
+        - SupportedLanguages.all.each do |language|
+          %option= language
       %label{ :for => 'content' } Content
       %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'entry.content' }
 

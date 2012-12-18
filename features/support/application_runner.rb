@@ -60,10 +60,10 @@ class EntriesRunner
 
   def shows_challenge_entries(entries)
     entries.count.should > 0
+    
     entries.each do |entry|
       @driver.page.should have_content entry[:description]
       @driver.page.should have_content entry[:language]
-      @driver.page.should have_content entry[:content]
     end
   end
 
