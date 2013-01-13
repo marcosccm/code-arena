@@ -4,3 +4,4 @@
 //= require services
 //= require angular-resource
 //= require codearena
+//= require 'ace/ace'

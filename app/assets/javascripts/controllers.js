@@ -23,7 +23,13 @@ function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) 
   };
 }
 
-function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location){
+function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location, editor){
+  $scope.entry = {};
+
+  editor.on('change', function(editor){
+    $scope.entry.content = editor.getValue();
+  });
+
   $scope.submit = function(){
     entryApi.save($scope.entry, function(resp){
       notificationCenter.broadcast(resp.message);

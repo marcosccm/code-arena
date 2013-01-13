@@ -71,7 +71,11 @@ class EntriesRunner
     @driver.click_on('Add Your Entry!') 
     @driver.fill_in('description', :with => entry[:description])
     @driver.select(entry[:language], :from => 'language')
+
+    #workaround to edit content without ace editor
+    @driver.page.execute_script('jQuery("#content").show();'); 
     @driver.fill_in('content', :with => entry[:content])
+
     @driver.click_on('Submit') 
   end
 end

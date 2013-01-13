@@ -5,10 +5,11 @@ describe('AddChallengeEntryCrtl', function(){
     scope = {};
     notifications = { broadcast: function(){} };
     entriesApi = { save: function(e,cb) { cb({}); }  };
-    location = { path: function(){} }
+    location = { path: function(){} };
+    editor = { on: function() {} };
 
-    new AddChallengeEntryCrtl(scope, entriesApi, notifications, location);
-  })
+    new AddChallengeEntryCrtl(scope, entriesApi, notifications, location, editor);
+  });
 
   describe('adding a challenge entry', function(){
     it('saves the entry', function(){

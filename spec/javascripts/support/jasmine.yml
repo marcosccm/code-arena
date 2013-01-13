@@ -1,5 +1,10 @@
 src_files:
-  - '**/*'
+  - 'jquery.js'
+  - 'angular.js'
+  - 'controllers.js'
+  - 'services.js'
+  - 'angular-resource.js'
+  - 'codearena.js'
 
 stylesheets:
   - stylesheets/**/*.css
@@ -11,7 +16,7 @@ spec_files:
   - '**/*[sS]pec.js'
 
 src_dir:
-  - 'app/assets/javascripts'
   - 'vendor/assets/javascripts'
+  - 'app/assets/javascripts'
 
 spec_dir: spec/javascripts

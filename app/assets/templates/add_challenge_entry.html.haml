@@ -12,7 +12,8 @@
         - SupportedLanguages.all.each do |language|
           %option= language
       %label{ :for => 'content' } Content
-      %textarea{ :name => 'content', :rows => 20, :cols => 80, 'ng-model' => 'entry.content' }
+      %textarea#content{ :name => 'content', 'type' => 'text', 'ng-model' => 'entry.content', :style => 'display:none;' }
+      #editor
 
     .form-actions
       %button.btn.btn-primary{ :type => 'submit', 'ng-click' => 'submit()' } Submit
