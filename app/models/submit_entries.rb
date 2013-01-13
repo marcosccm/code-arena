@@ -1,7 +1,13 @@
-class SubmitEntries < Struct.new(:entry, :entries, :ui)
-  def run
-    entry[:content] = Pygments.highlight(entry[:content], lexer: entry[:language].to_s.downcase)
-    entries.submit(entry)
-    ui.entry_submited
+class SubmitEntries 
+  def initialize(entries, ui, builder=EntryBuilder.new)
+    @entries = entries
+    @ui = ui
+    @builder = builder
+  end
+
+  def submit(entry_params)
+    entry = @builder.build(entry_params)
+    @entries.submit(entry)
+    @ui.entry_submited
   end
 end

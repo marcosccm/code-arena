@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    SubmitEntries.new(params[:entry], ChallengeEntries, self).run
+    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry])
   end
 
   def entry_submited

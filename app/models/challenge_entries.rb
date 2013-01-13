@@ -1,6 +1,6 @@
 class ChallengeEntries
-  def self.submit(entry_data)
-    entries << ChallengeEntry.new(entry_data[:description], entry_data[:language], entry_data[:content])
+  def self.submit(entry)
+    entries << entry
   end
 
   def self.current
@@ -12,8 +12,3 @@ class ChallengeEntries
   end
 end
 
-class ChallengeEntry < Struct.new(:description, :language, :content)
-  def as_hash
-    { description: description, language: language, content: content }
-  end
-end
