@@ -3,10 +3,12 @@ function NotificationCrtl($scope, notificationCenter) {
     $scope.message = notificationCenter.message;
   });
 }
+NotificationCrtl.$inject = ['$scope', 'notificationCenter']
 
 function CurrentChallengeCrtl($scope, challengeApi) {
   $scope.challenge = challengeApi.query();
 }
+CurrentChallengeCrtl.$inject = ['$scope', 'challengeApi']
 
 function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) {
   $scope.challenge = challengeApi.query();
@@ -22,6 +24,7 @@ function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) 
     $location.path('/');
   };
 }
+EditChallengeCrtl.$inject = ['$scope', 'challengeApi', 'notificationCenter', '$location']
 
 function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location, editor){
   $scope.entry = {};
@@ -39,8 +42,10 @@ function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location, 
   $scope.cancel = function(){
     $location.path('/');
   };
-}
+};
+AddChallengeEntryCrtl.$inject = ['$scope', 'entryApi', 'notificationCenter', '$location', 'editor']
 
 function EntryListCrtl($scope, entryApi) {
   $scope.entries = entryApi.query();
 }
+EntryListCrtl.$inject = ['$scope', 'entryApi']

@@ -10,12 +10,14 @@ function NotificationCenter($rootScope){
 
   return notificationCenter;
 };
+NotificationCenter.$inject = ['$rootScope']
 
 function EntryApi($resource) {
   return $resource('entries/:id', {}, {
     query: { method: 'GET', isArray: true }
   });
 };
+EntryApi.$inject = ['$resource']
 
 function ChallengeApi($resource) {
   return $resource('challenge', {}, {
@@ -23,6 +25,7 @@ function ChallengeApi($resource) {
     update: { method: 'PUT' }
   });
 };
+ChallengeApi.$inject = ['$resource']
 
 function Editor($rootScope) {
   internal = ace.edit('editor');
@@ -38,6 +41,7 @@ function Editor($rootScope) {
 
   return editor;
 };
+Editor.$inject = ['$rootScope']
 
 angular.module('entryService', ['ngResource'])
        .factory('entryApi', EntryApi)
