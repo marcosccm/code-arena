@@ -1,51 +1,62 @@
-function NotificationCrtl($scope, notificationCenter) {
-  $scope.$on('notification:received', function(message){
-    $scope.message = notificationCenter.message;
-  });
-}
-NotificationCrtl.$inject = ['$scope', 'notificationCenter']
-
-function CurrentChallengeCrtl($scope, challengeApi) {
-  $scope.challenge = challengeApi.query();
-}
-CurrentChallengeCrtl.$inject = ['$scope', 'challengeApi']
-
-function EditChallengeCrtl($scope, challengeApi, notificationCenter, $location) {
-  $scope.challenge = challengeApi.query();
-
-  $scope.edit = function(){
-    challengeApi.update($scope.challenge, function(resp){
-      notificationCenter.broadcast(resp.message);
-      $location.path('/');
+var NotificationCrtl = [
+  '$scope', 'notificationCenter', 
+  function($scope, notificationCenter) {
+    $scope.$on('notification:received', function(message){
+      $scope.message = notificationCenter.message;
     });
-  };
+  }
+];
 
-  $scope.cancel = function(){
-    $location.path('/');
-  };
-}
-EditChallengeCrtl.$inject = ['$scope', 'challengeApi', 'notificationCenter', '$location']
+var CurrentChallengeCrtl = [
+ '$scope', 'challengeApi',
+  function($scope, challengeApi) {
+    $scope.challenge = challengeApi.query();
+  }
+];
 
-function AddChallengeEntryCrtl($scope, entryApi, notificationCenter, $location, editor){
-  $scope.entry = {};
+var EditChallengeCrtl = [
+  '$scope', 'challengeApi', 'notificationCenter', '$location',
+  function($scope, challengeApi, notificationCenter, $location) {
+    $scope.challenge = challengeApi.query();
 
-  editor.on('change', function(editor){
-    $scope.entry.content = editor.getValue();
-  });
+    $scope.edit = function(){
+      challengeApi.update($scope.challenge, function(resp){
+        notificationCenter.broadcast(resp.message);
+        $location.path('/');
+      });
+    };
 
-  $scope.submit = function(){
-    entryApi.save($scope.entry, function(resp){
-      notificationCenter.broadcast(resp.message);
+    $scope.cancel = function(){
       $location.path('/');
-    });
-  };
-  $scope.cancel = function(){
-    $location.path('/');
-  };
-};
-AddChallengeEntryCrtl.$inject = ['$scope', 'entryApi', 'notificationCenter', '$location', 'editor']
+    };
+  }
+];
 
-function EntryListCrtl($scope, entryApi) {
-  $scope.entries = entryApi.query();
-}
-EntryListCrtl.$inject = ['$scope', 'entryApi']
+var AddChallengeEntryCrtl = [
+  '$scope', 'entryApi', 'notificationCenter', '$location', 'editor',
+  function($scope, entryApi, notificationCenter, $location, editor){
+    $scope.entry = {};
+
+    editor.on('change', function(editor){
+      $scope.entry.content = editor.getValue();
+    });
+
+    $scope.submit = function(){
+      entryApi.save($scope.entry, function(resp){
+        notificationCenter.broadcast(resp.message);
+        $location.path('/');
+      });
+    };
+
+    $scope.cancel = function(){
+      $location.path('/');
+    };
+  }
+];
+
+var EntryListCrtl = [
+  '$scope', 'entryApi',
+  function($scope, entryApi) {
+    $scope.entries = entryApi.query();
+  }
+];

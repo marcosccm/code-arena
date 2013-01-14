@@ -1,47 +1,55 @@
-function NotificationCenter($rootScope){
-  var notificationCenter = {};
-  
-  notificationCenter.message = '';
+var NotificationCenter = [
+  '$rootScope',
+  function($rootScope){
+    var notificationCenter = {};
+    
+    notificationCenter.message = '';
 
-  notificationCenter.broadcast = function(message){
-    this.message = message
-    $rootScope.$broadcast('notification:received');
-  };
+    notificationCenter.broadcast = function(message){
+      this.message = message
+      $rootScope.$broadcast('notification:received');
+    };
 
-  return notificationCenter;
-};
-NotificationCenter.$inject = ['$rootScope']
+    return notificationCenter;
+  }
+];
 
-function EntryApi($resource) {
-  return $resource('entries/:id', {}, {
-    query: { method: 'GET', isArray: true }
-  });
-};
-EntryApi.$inject = ['$resource']
-
-function ChallengeApi($resource) {
-  return $resource('challenge', {}, {
-    query:  { method: 'GET' },
-    update: { method: 'PUT' }
-  });
-};
-ChallengeApi.$inject = ['$resource']
-
-function Editor($rootScope) {
-  internal = ace.edit('editor');
-  editor   = {};
-
-  editor.on = function(trigger, callback) {
-    internal.getSession().on(trigger, function(){
-      $rootScope.$apply(function(scope) {
-        callback(internal);
-      });
+var EntryApi = [
+  '$resource',
+  function($resource) {
+    return $resource('entries/:id', {}, {
+      query: { method: 'GET', isArray: true }
     });
-  };
+  }
+];
 
-  return editor;
-};
-Editor.$inject = ['$rootScope']
+var ChallengeApi = [
+  '$resource',
+  function($resource) {
+    return $resource('challenge', {}, {
+      query:  { method: 'GET' },
+      update: { method: 'PUT' }
+    });
+  }
+];
+
+var Editor = [
+  '$rootScope',
+  function($rootScope) {
+    internal = ace.edit('editor');
+    editor   = {};
+
+    editor.on = function(trigger, callback) {
+      internal.getSession().on(trigger, function(){
+        $rootScope.$apply(function(scope) {
+          callback(internal);
+        });
+      });
+    };
+
+    return editor;
+  }
+];
 
 angular.module('entryService', ['ngResource'])
        .factory('entryApi', EntryApi)
