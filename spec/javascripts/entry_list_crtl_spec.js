@@ -3,10 +3,9 @@ describe('EntryListCrtl', function(){
 
   beforeEach(inject(function($controller) {
     scope = {};
-    entriesApi = { query: function(){}, };
     entries = ['entry1', 'entry2'];
+    entriesApi = { query: jasmine.createSpy().andReturn(entries) };
 
-    spyOn(entriesApi, 'query').andReturn(entries)
     $controller(EntryListCrtl, { $scope: scope, entryApi: entriesApi});
   }));
 

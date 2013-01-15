@@ -2,10 +2,7 @@ describe('NotficiationCenter', function(){
   var rootScope, notificationCenter;
 
   beforeEach(inject(function($injector){
-    rootScope = {
-      $broadcast: function(){}
-    };
-    spyOn(rootScope, '$broadcast');
+    rootScope = jasmine.createSpyObj('rootScope', ['$broadcast']);
     notificationCenter = $injector.instantiate(NotificationCenter,  { $rootScope: rootScope});
   }));
 

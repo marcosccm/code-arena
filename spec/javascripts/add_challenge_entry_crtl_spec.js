@@ -3,10 +3,12 @@ describe('AddChallengeEntryCrtl', function(){
 
   beforeEach(inject(function($controller) {
     scope = {};
-    notifications = { broadcast: function(){} };
-    entriesApi = { save: function(e,cb) { cb({}); }  };
-    location = { path: function(){} };
-    editor = { on: function() {}, setMode: function() {} };
+    entriesApi = {};
+
+    notifications    = jasmine.createSpyObj('notifications', ['broadcast']);
+    location         = jasmine.createSpyObj('location', ['path']); 
+    editor           = jasmine.createSpyObj('editor', ['on', 'setMode']);
+    entriesApi.save  = jasmine.createSpy().andCallFake(function(i, cb) { cb({}) });
 
     $controller(AddChallengeEntryCrtl, {
       $scope: scope, 
@@ -19,19 +21,16 @@ describe('AddChallengeEntryCrtl', function(){
 
   describe('adding a challenge entry', function(){
     it('saves the entry', function(){
-      spyOn(entriesApi, 'save')
       scope.submit();
       expect(entriesApi.save).toHaveBeenCalled();
     });
 
     it('broadcasts server response message', function(){
-      spyOn(notifications, 'broadcast')
       scope.submit();
       expect(notifications.broadcast).toHaveBeenCalled();
     });
 
     it('redirects to the index page', function(){
-      spyOn(location, 'path')
       scope.submit();
       expect(location.path).toHaveBeenCalledWith('/');
     });
@@ -39,7 +38,6 @@ describe('AddChallengeEntryCrtl', function(){
 
   describe('canceling the add action', function(){
     it('redirects to the index page', function(){
-      spyOn(location, 'path')
       scope.cancel();
       expect(location.path).toHaveBeenCalledWith('/');
     });
@@ -47,7 +45,6 @@ describe('AddChallengeEntryCrtl', function(){
 
   describe('changing the selected editor language', function(){
     it('sends the change to the editor', function(){
-      spyOn(editor, 'setMode')
       scope.entry.language = 'ruby'
       scope.changeLanguage();
       expect(editor.setMode).toHaveBeenCalledWith('ruby');
