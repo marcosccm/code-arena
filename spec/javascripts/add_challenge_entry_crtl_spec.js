@@ -1,15 +1,21 @@
 describe('AddChallengeEntryCrtl', function(){
   var scope, entriesApi, notifications, location;
 
-  beforeEach(function() {
+  beforeEach(inject(function($controller) {
     scope = {};
     notifications = { broadcast: function(){} };
     entriesApi = { save: function(e,cb) { cb({}); }  };
     location = { path: function(){} };
     editor = { on: function() {} };
 
-    new AddChallengeEntryCrtl(scope, entriesApi, notifications, location, editor);
-  });
+    $controller(AddChallengeEntryCrtl, {
+      $scope: scope, 
+      entryApi: entriesApi, 
+      notificationCenter: notifications, 
+      $location: location, 
+      editor: editor
+    });
+  }));
 
   describe('adding a challenge entry', function(){
     it('saves the entry', function(){

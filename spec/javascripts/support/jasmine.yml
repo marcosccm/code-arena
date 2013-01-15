@@ -1,9 +1,10 @@
 src_files:
   - 'jquery.js'
   - 'angular.js'
+  - 'angular-mocks.js'
+  - 'angular-resource.js'
   - 'controllers.js'
   - 'services.js'
-  - 'angular-resource.js'
   - 'codearena.js'
 
 stylesheets:

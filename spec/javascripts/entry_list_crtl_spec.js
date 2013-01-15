@@ -1,15 +1,16 @@
 describe('EntryListCrtl', function(){
   var scope, entriesApi, entries;
 
-  beforeEach(function() {
+  beforeEach(inject(function($controller) {
     scope = {};
     entriesApi = { query: function(){}, };
     entries = ['entry1', 'entry2'];
-  });
+
+    spyOn(entriesApi, 'query').andReturn(entries)
+    $controller(EntryListCrtl, { $scope: scope, entryApi: entriesApi});
+  }));
 
   it('instatiate entries from server response', function(){
-    spyOn(entriesApi, 'query').andReturn(entries)
-    new EntryListCrtl(scope, entriesApi);
     expect(scope.entries).toEqual(entries);
   });
 });

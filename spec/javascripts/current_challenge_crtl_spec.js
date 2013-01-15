@@ -1,15 +1,15 @@
 describe('CurrentChallengeCrtl', function(){
-  var scope, challengeApi, challenge;
+  var scope, challengeApi;
 
-  beforeEach(function() {
+  beforeEach(inject(function($controller) {
     scope = {};
     challengeApi = { query: function(){}, };
-    challenge = 'challenge'
-  });
+    spyOn(challengeApi, 'query').andReturn('challenge')
+
+    $controller(CurrentChallengeCrtl, { $scope: scope, challengeApi: challengeApi });
+  }));
 
   it('instatiate challenge from api response', function(){
-    spyOn(challengeApi, 'query').andReturn(challenge)
-    crtl  = new CurrentChallengeCrtl(scope, challengeApi);
-    expect(scope.challenge).toEqual(challenge);
+    expect(scope.challenge).toEqual('challenge');
   });
 });

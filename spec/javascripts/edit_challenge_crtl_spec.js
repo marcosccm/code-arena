@@ -1,7 +1,7 @@
 describe('EditChallengeCrtl', function(){
   var scope, challengeApi, notificationCenter, challenge, location;
 
-  beforeEach(function() {
+  beforeEach(inject(function($controller) {
     scope = {};
     notificationCenter = { broadcast: function(){} };
     challengeApi = { 
@@ -12,12 +12,17 @@ describe('EditChallengeCrtl', function(){
       path: function(){}
     }
     challenge = 'challenge'
-    crtl  = new EditChallengeCrtl(scope, challengeApi, notificationCenter, location);
-  })
+    spyOn(challengeApi, 'query').andReturn(challenge)
+
+    crtl  = $controller(EditChallengeCrtl, {
+      $scope: scope, 
+      challengeApi: challengeApi, 
+      notificationCenter: notificationCenter, 
+      $location: location
+    });
+  }));
 
   it('instatiate challenge from api response', function(){
-    spyOn(challengeApi, 'query').andReturn(challenge)
-    crtl  = new EditChallengeCrtl(scope, challengeApi, notificationCenter);
     expect(scope.challenge).toEqual(challenge);
   });
 
