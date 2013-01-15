@@ -39,6 +39,11 @@ var Editor = [
     internal = ace.edit('editor');
     editor   = {};
 
+    editor.setMode  = function(language) {
+      debugger;
+      internal.getSession().setMode("ace/mode/" + language.toLowerCase());
+    };
+
     editor.on = function(trigger, callback) {
       internal.getSession().on(trigger, function(){
         $rootScope.$apply(function(scope) {

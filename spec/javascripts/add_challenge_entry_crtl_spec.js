@@ -6,7 +6,7 @@ describe('AddChallengeEntryCrtl', function(){
     notifications = { broadcast: function(){} };
     entriesApi = { save: function(e,cb) { cb({}); }  };
     location = { path: function(){} };
-    editor = { on: function() {} };
+    editor = { on: function() {}, setMode: function() {} };
 
     $controller(AddChallengeEntryCrtl, {
       $scope: scope, 
@@ -42,6 +42,15 @@ describe('AddChallengeEntryCrtl', function(){
       spyOn(location, 'path')
       scope.cancel();
       expect(location.path).toHaveBeenCalledWith('/');
+    });
+  });
+
+  describe('changing the selected editor language', function(){
+    it('sends the change to the editor', function(){
+      spyOn(editor, 'setMode')
+      scope.entry.language = 'ruby'
+      scope.changeLanguage();
+      expect(editor.setMode).toHaveBeenCalledWith('ruby');
     });
   });
 });

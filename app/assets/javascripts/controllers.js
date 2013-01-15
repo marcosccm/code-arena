@@ -40,6 +40,10 @@ var AddChallengeEntryCrtl = [
     editor.on('change', function(editor){
       $scope.entry.content = editor.getValue();
     });
+    
+    $scope.changeLanguage = function() {
+      editor.setMode($scope.entry.language);
+    };
 
     $scope.submit = function(){
       entryApi.save($scope.entry, function(resp){
