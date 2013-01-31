@@ -46,7 +46,11 @@ class ChallengeRunner
   def edit_challenge(title, content)
     @driver.click_on('Edit') 
     @driver.fill_in('title',   :with => title)
+
+    #workaround to edit content without ace editor
+    @driver.page.execute_script('jQuery("#content").show();'); 
     @driver.fill_in('content', :with => content)
+
     @driver.click_on('Save') 
   end
 end

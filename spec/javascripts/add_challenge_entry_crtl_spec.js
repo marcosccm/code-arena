@@ -8,6 +8,7 @@ describe('AddChallengeEntryCrtl', function(){
     notifications    = jasmine.createSpyObj('notifications', ['broadcast']);
     location         = jasmine.createSpyObj('location', ['path']); 
     editor           = jasmine.createSpyObj('editor', ['on', 'setMode']);
+    editor.init      = jasmine.createSpy().andReturn(editor);
     entriesApi.save  = jasmine.createSpy().andCallFake(function(i, cb) { cb({}) });
 
     $controller(AddChallengeEntryCrtl, {
@@ -18,6 +19,10 @@ describe('AddChallengeEntryCrtl', function(){
       editor: editor
     });
   }));
+
+  it('initializes the editor', function() {
+    expect(editor.init).toHaveBeenCalledWith('editor');
+  });
 
   describe('adding a challenge entry', function(){
     it('saves the entry', function(){

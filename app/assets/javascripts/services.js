@@ -36,20 +36,29 @@ var ChallengeApi = [
 var Editor = [
   '$rootScope',
   function($rootScope) {
-    internal = ace.edit('editor');
+    internal = {};
     editor   = {};
 
+    editor.init  = function(container) {
+      internal = ace.edit(container);
+      return this;
+    }
+
     editor.setMode  = function(language) {
-      debugger;
       internal.getSession().setMode("ace/mode/" + language.toLowerCase());
+      return this;
     };
+
+    editor.setContent = function(content) {
+      internal.getSession().setValue(content);
+      return this;
+    }
 
     editor.on = function(trigger, callback) {
       internal.getSession().on(trigger, function(){
-        $rootScope.$apply(function(scope) {
-          callback(internal);
-        });
+        callback(internal);
       });
+      return this;
     };
 
     return editor;

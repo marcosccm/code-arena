@@ -12,7 +12,7 @@
         - SupportedLanguages.all.each do |language|
           %option= language
       %label{ :for => 'content' } Content
-      %textarea#content{ :name => 'content', 'type' => 'text', 'ng-model' => 'entry.content', :style => 'display:none;' }
+      %textarea#content{ 'ng-model' => 'entry.content', :style => 'display:none' }
       #editor
 
     .form-actions

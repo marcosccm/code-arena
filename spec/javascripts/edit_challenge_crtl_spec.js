@@ -10,14 +10,25 @@ describe('EditChallengeCrtl', function(){
     };
     notificationCenter = jasmine.createSpyObj('notifications', ['broadcast']);
     location           = jasmine.createSpyObj('location', ['path']); 
+    editor             = jasmine.createSpyObj('editor', ['on', 'setMode']);
+    editor.init        = jasmine.createSpy().andReturn(editor);
 
     crtl  = $controller(EditChallengeCrtl, {
       $scope: scope, 
       challengeApi: challengeApi, 
       notificationCenter: notificationCenter, 
-      $location: location
+      $location: location,
+      editor: editor
     });
   }));
+
+  it('initializes the editor', function() {
+    expect(editor.init).toHaveBeenCalledWith('editor');
+  });
+
+  it('sets the editor to markdown', function() {
+    expect(editor.setMode).toHaveBeenCalledWith('markdown');
+  });
 
   it('instatiate challenge from api response', function(){
     expect(scope.challenge).toEqual(challenge);

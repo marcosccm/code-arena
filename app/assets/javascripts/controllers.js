@@ -15,9 +15,17 @@ var CurrentChallengeCrtl = [
 ];
 
 var EditChallengeCrtl = [
-  '$scope', 'challengeApi', 'notificationCenter', '$location',
-  function($scope, challengeApi, notificationCenter, $location) {
-    $scope.challenge = challengeApi.query();
+  '$scope', 'challengeApi', 'notificationCenter', '$location', 'editor',
+  function($scope, challengeApi, notificationCenter, $location, editor) {
+    $scope.challenge = challengeApi.query(function(challenge) {
+      editor.setContent(challenge.content);
+    });
+
+    editor.init('editor').on('change', function(editor){
+      $scope.challenge.content = editor.getValue();
+    })
+    
+    editor.setMode('markdown');
 
     $scope.edit = function(){
       challengeApi.update($scope.challenge, function(resp){
@@ -37,7 +45,7 @@ var AddChallengeEntryCrtl = [
   function($scope, entryApi, notificationCenter, $location, editor){
     $scope.entry = {};
 
-    editor.on('change', function(editor){
+    editor.init('editor').on('change', function(editor){
       $scope.entry.content = editor.getValue();
     });
     
