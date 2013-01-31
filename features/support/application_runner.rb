@@ -36,6 +36,7 @@ class ChallengeRunner
 
   def initialize
     @driver = Driver.new
+    @code_editor = CodeEditor.new(@driver)
   end
 
   def shows_challenge(challenge)
@@ -45,12 +46,8 @@ class ChallengeRunner
 
   def edit_challenge(title, content)
     @driver.click_on('Edit') 
-    @driver.fill_in('title',   :with => title)
-
-    #workaround to edit content without ace editor
-    @driver.page.execute_script('jQuery("#content").show();'); 
-    @driver.fill_in('content', :with => content)
-
+    @driver.fill_in('title', :with => title)
+    @code_editor.fill(content)
     @driver.click_on('Save') 
   end
 end
@@ -60,6 +57,7 @@ class EntriesRunner
 
   def initialize
     @driver = Driver.new
+    @code_editor = CodeEditor.new(@driver)
   end
 
   def shows_challenge_entries(entries)
@@ -75,11 +73,19 @@ class EntriesRunner
     @driver.click_on('Add Your Entry!') 
     @driver.fill_in('description', :with => entry[:description])
     @driver.select(entry[:language], :from => 'language')
+    @code_editor.fill(entry[:content])
+    @driver.click_on('Submit') 
+  end
+end
 
+class CodeEditor
+  def  initialize(driver)
+    @driver = driver
+  end
+
+  def fill(content)
     #workaround to edit content without ace editor
     @driver.page.execute_script('jQuery("#content").show();'); 
-    @driver.fill_in('content', :with => entry[:content])
-
-    @driver.click_on('Submit') 
+    @driver.fill_in('content', :with => content)
   end
 end
