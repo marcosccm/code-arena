@@ -2,7 +2,7 @@
   %div{ 'ng-bind-template' => '{{message}}' }
 
 - if current_user
-  = current_user[:info][:nickname]
+  = current_user.nickname
   = link_to 'Sair!', 'auth/logout'
 - else
   = link_to 'Github!', 'auth/github'

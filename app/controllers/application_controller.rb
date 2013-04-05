@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    session[:auth_hash]
+    session[:current_user]
   end
 end
