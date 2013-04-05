@@ -20,6 +20,8 @@ end
 
 gem 'jquery-rails'
 gem 'pygments.rb'
+gem 'omniauth'
+gem 'omniauth-github'
 
 group :test, :development do
   gem 'cucumber-rails'
