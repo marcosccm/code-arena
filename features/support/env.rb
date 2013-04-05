@@ -1,4 +1,5 @@
 require_relative 'fake_data_store'
+require_relative 'fake_github_auth'
 require_relative 'application_runner'
 require 'cucumber/rails'
 
@@ -11,4 +12,5 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Before do
   @data_store = FakeDataStore.new
   @app        = ApplicationRunner.new
+  @auth       = FakeGithubAuth.new
 end

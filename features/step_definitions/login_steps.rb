@@ -1,50 +1,23 @@
 When /^I log in with my github account$/ do
-  OmniAuth.config.test_mode = true
-
-  OmniAuth.config.mock_auth[:github] = {
-    :info => { 
-      :email   => 'test@user.com',
-      :image   => "avatar_url",
-      :name     => "Mr Test",
-      :nickname => "testuser",
-      :provider => "github",
-      :uid      => "179491"
-    }
-  }
-    
-
-  visit '/'
-  click_on 'Github!'
+  @auth.mock_auth(nickname: 'testuser')
+  @app.visit_home_page
+  @app.login_with_github
 end
 
 Given /^I am a logged user$/ do
-  OmniAuth.config.test_mode = true
-
-  OmniAuth.config.mock_auth[:github] = {
-    :info => { 
-      :email   => 'test@user.com',
-      :image   => "avatar_url",
-      :name     => "Mr Test",
-      :nickname => "testuser",
-      :provider => "github",
-      :uid      => "179491"
-    }
-  }
-    
-
-  visit '/'
-  click_on 'Github!'
+  @auth.mock_auth(nickname: 'testuser')
+  @app.visit_home_page
+  @app.login_with_github
 end
 
 When /^I logout of my account$/ do
-  click_on 'Sair!'
+  @app.logout
 end
 
 Then /^I should not see my user details on the page$/ do
-  page.should have_content "Github!"
-  page.should_not have_content "testuser"
+  @app.do_not_show_user_details(nickname: 'testuser')
 end
 
 Then /^I should see my user details on the page$/ do
-  page.should have_content "testuser"
+  @app.shows_user_details(nickname: 'testuser')
 end

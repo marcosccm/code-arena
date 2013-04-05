@@ -14,6 +14,7 @@ class ApplicationRunner
     @driver = Driver.new
     @challenge_runner = ChallengeRunner.new
     @entry_runner = EntriesRunner.new
+    @login_runner = LoginRunner.new
   end
 
   def_delegators :@challenge_runner, :shows_challenge,
@@ -21,6 +22,11 @@ class ApplicationRunner
 
   def_delegators :@entry_runner, :shows_challenge_entries,
                                  :submit_challenge_entry
+
+  def_delegators  :@login_runner, :login_with_github,
+                                  :logout,
+                                  :shows_user_details,
+                                  :do_not_show_user_details
 
   def visit_home_page
     @driver.visit('/')
@@ -87,5 +93,30 @@ class CodeEditor
     #workaround to edit content without ace editor
     @driver.page.execute_script('jQuery("#content").show();'); 
     @driver.fill_in('content', :with => content)
+  end
+end
+
+class LoginRunner
+  include RSpec::Matchers
+
+  def initialize
+    @driver = Driver.new
+  end
+
+  def login_with_github
+    @driver.click_on 'Github!'
+  end
+
+  def logout
+    @driver.click_on 'Sair!'
+  end
+
+  def shows_user_details(user)
+    @driver.page.should have_content user[:nickname]
+  end
+
+  def do_not_show_user_details(user)
+    @driver.page.should_not have_content user[:nickname]
+    @driver.page.should have_content 'Github'
   end
 end
