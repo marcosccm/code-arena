@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def session_created(user)
-    puts user.inspect
     session[:current_user] = user
     redirect_to root_path
   end
