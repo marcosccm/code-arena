@@ -15,9 +15,9 @@ When /^I logout of my account$/ do
 end
 
 Then /^I should not see my user details on the page$/ do
-  @app.do_not_show_user_details(nickname: 'testuser')
+  @app.do_not_show_user_details(@auth.current_user)
 end
 
 Then /^I should see my user details on the page$/ do
-  @app.shows_user_details(nickname: 'testuser')
+  @app.shows_user_details(@auth.current_user)
 end

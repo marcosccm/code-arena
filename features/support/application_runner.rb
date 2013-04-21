@@ -113,11 +113,11 @@ class LoginRunner
   end
 
   def shows_user_details(user)
-    @driver.page.should have_content user[:nickname]
+    @driver.page.should have_content user
   end
 
   def do_not_show_user_details(user)
-    @driver.page.should_not have_content user[:nickname]
+    @driver.page.should_not have_content user
     @driver.page.should have_content 'Github'
   end
 end
