@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'pygments.rb'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'debugger'
 
 group :test, :development do
   gem 'cucumber-rails'
