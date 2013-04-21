@@ -72,6 +72,7 @@ class EntriesRunner
     entries.each do |entry|
       @driver.page.should have_content entry[:description]
       @driver.page.should have_content entry[:language]
+      @driver.page.should have_content entry[:raw]
     end
   end
 

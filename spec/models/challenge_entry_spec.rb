@@ -12,14 +12,20 @@ describe ChallengeEntry do
       entry.add_highlight(highlighted_code)
       entry.content.should == highlighted_code
     end
+
+    it 'keeps the raw content' do
+      entry.add_highlight(highlighted_code)
+      entry.raw.should == 'code'
+    end
   end
 
   describe 'hash representation' do
-    it 'contains description, language and content' do
+    it 'contains description, language, content and raw content' do
       expected_hash = {
         description: 'descr',
         language:    'ruby',
-        content:     'code'
+        content:     'code',
+        raw:         'code'
       }
       entry.as_hash.should == expected_hash
     end

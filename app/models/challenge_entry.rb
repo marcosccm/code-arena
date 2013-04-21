@@ -1,9 +1,10 @@
 class ChallengeEntry 
-  attr_accessor :description, :language, :content
+  attr_reader :description, :language, :content, :raw
 
   def initialize(params) 
     @description = params.fetch(:description)
     @language = params.fetch(:language)
+    @raw = params.fetch(:content)
     @content = params.fetch(:content)
   end
 
@@ -12,6 +13,6 @@ class ChallengeEntry
   end
 
   def as_hash
-    { description: description, language: language, content: content }
+    { description: description, language: language, content: content, raw: raw }
   end
 end

@@ -1,8 +1,8 @@
 Given /^many entries for that challenge$/ do
   entries = [
-    { description: 'entry1', language: 'Ruby', content: 'bla' },
-    { description: 'entry2', language: 'Python', content: 'bla' },
-    { description: 'entry3', language: 'Java', content: 'bla' }
+    { description: 'entry1', language: 'Ruby', content: 'bla1' },
+    { description: 'entry2', language: 'Python', content: 'bla2' },
+    { description: 'entry3', language: 'Java', content: 'bla3' }
   ] 
 
   @data_store.set_current_entries(entries)
