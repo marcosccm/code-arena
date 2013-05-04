@@ -17,4 +17,12 @@ var CodeArena = [
   }
 ];
 
-angular.module('codearena',['entryService']).config(CodeArena);
+var CSRFSetting = [
+  '$httpProvider', 
+  function(httpProvider) {
+    httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+  }
+]
+
+angular.module('codearena',['entryService']).config(CodeArena)
+                                            .config(CSRFSetting);
