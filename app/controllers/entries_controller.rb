@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry])
+    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry], current_user)
   end
 
   def entry_submited

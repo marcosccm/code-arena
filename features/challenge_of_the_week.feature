@@ -3,13 +3,13 @@ Feature: Challenge of the week
   I want to see the challenge of the week
   So I can try to solve it
 
-  @selenium
+  @javascript
   Scenario: Current challenge
     Given a current challenge
     When I go to the home page
     Then I should see the challenge
 
-  @selenium
+  @javascript
   Scenario: Editing current challenge
     Given a current challenge
     When I go to the home page

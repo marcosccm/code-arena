@@ -10,5 +10,6 @@
   %section
     %article{ 'ng-repeat' => 'entry in entries' }
       %p {{ entry.description }} ({{ entry.language }})
+      %p by {{ entry.author }} 
       %p{ 'ng-bind-html-unsafe' => 'entry.content' }
     %a{ :href => '#/new' } Add Your Entry!

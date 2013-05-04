@@ -1,8 +1,9 @@
 require_relative '../../app/models/challenge_entry'
 
 describe ChallengeEntry do
+  let(:author) { stub(nickname: 'someone') }
   subject(:entry) do 
-    ChallengeEntry.new(description: 'descr', language: 'ruby', content: 'code') 
+    ChallengeEntry.new(description: 'descr', language: 'ruby', content: 'code', author: author)
   end
 
   describe 'adding highlighted code' do
@@ -19,13 +20,20 @@ describe ChallengeEntry do
     end
   end
 
+  describe 'authors name' do
+    it 'returns the nickname of the author'do
+      entry.author_name.should == 'someone'
+    end
+  end
+
   describe 'hash representation' do
     it 'contains description, language, content and raw content' do
       expected_hash = {
         description: 'descr',
         language:    'ruby',
         content:     'code',
-        raw:         'code'
+        raw:         'code',
+        author:      'someone'
       }
       entry.as_hash.should == expected_hash
     end

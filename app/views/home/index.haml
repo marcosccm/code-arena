@@ -1,11 +1,12 @@
 %div{ 'ng-controller' => 'NotificationCrtl' }
   %div{ 'ng-bind-template' => '{{message}}' }
 
-- if current_user
-  = current_user.nickname
-  = link_to 'Sair!', 'auth/logout'
-- else
-  = link_to 'Github!', 'auth/github'
+%section#current-user-info
+  - if current_user
+    = current_user.nickname
+    = link_to 'Sair!', 'auth/logout'
+  - else
+    = link_to 'Github!', 'auth/github'
 
 %section#challenge-week
   %article{ 'ng-view' => '' }

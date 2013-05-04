@@ -12,7 +12,8 @@ Feature: Submiting challenge entries
 
   @javascript
   Scenario: Posting a challenge entry
-    Given a current challenge
+    Given I am a logged user
+    And a current challenge
     When I go to the home page
     And I post a challenge entry
     Then I should see my challenge entry

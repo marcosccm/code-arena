@@ -70,9 +70,12 @@ class EntriesRunner
     entries.count.should > 0
     
     entries.each do |entry|
-      @driver.page.should have_content entry[:description]
-      @driver.page.should have_content entry[:language]
-      @driver.page.should have_content entry[:raw]
+      @driver.within('#current-entries') do
+        @driver.page.should have_content entry[:description]
+        @driver.page.should have_content entry[:language]
+        @driver.page.should have_content entry[:raw]
+        @driver.page.should have_content entry[:author] if entry[:author]
+      end
     end
   end
 
@@ -105,19 +108,32 @@ class LoginRunner
   end
 
   def login_with_github
-    @driver.click_on 'Github!'
+    current_user_section do
+      @driver.click_on 'Github!'
+    end
   end
 
   def logout
-    @driver.click_on 'Sair!'
+    current_user_section do
+      @driver.click_on 'Sair!'
+    end
   end
 
   def shows_user_details(user)
-    @driver.page.should have_content user
+    current_user_section do
+      @driver.page.should have_content user
+    end
   end
 
   def do_not_show_user_details(user)
-    @driver.page.should_not have_content user
-    @driver.page.should have_content 'Github'
+    current_user_section do
+      @driver.page.should_not have_content user
+      @driver.page.should have_content 'Github'
+    end
   end
+
+  def current_user_section 
+    @driver.within('#current-user-info') { yield }
+  end
+
 end

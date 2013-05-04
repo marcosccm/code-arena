@@ -1,8 +1,9 @@
 Given /^many entries for that challenge$/ do
+  author = OpenStruct.new(nickname: 'marcosccm')
   entries = [
-    { description: 'entry1', language: 'Ruby', content: 'bla1' },
-    { description: 'entry2', language: 'Python', content: 'bla2' },
-    { description: 'entry3', language: 'Java', content: 'bla3' }
+    { description: 'entry1', language: 'Ruby', content: 'bla1', author: author },
+    { description: 'entry2', language: 'Python', content: 'bla2', author: author },
+    { description: 'entry3', language: 'Java', content: 'bla3', author: author }
   ] 
 
   @data_store.set_current_entries(entries)
@@ -22,5 +23,7 @@ end
 
 Then /^I should see my challenge entry$/ do
   @app.shows_success_message('entry submited successfully')
-  @app.shows_challenge_entries(@data_store.current_entries)
+
+  my_entry = @data_store.current_entries.last
+  @app.shows_challenge_entries([my_entry.merge(author: @auth.current_user)])
 end
