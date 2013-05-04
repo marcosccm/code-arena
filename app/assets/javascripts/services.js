@@ -41,6 +41,7 @@ var Editor = [
 
     editor.init  = function(container) {
       internal = ace.edit(container);
+      internal.setTheme('ace/theme/github')
       return this;
     }
 
