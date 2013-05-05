@@ -15,4 +15,16 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.order = "random"
+
+  config.before(:all) do
+    MongoConnection.setup(
+      host: 'localhost',
+      port: '27017',
+      database: 'codearena-test'
+    )
+  end
+
+  config.before(:each) do
+    MongoConnection.drop_all
+  end
 end

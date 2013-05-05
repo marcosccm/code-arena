@@ -21,4 +21,10 @@ Before do
   @data_store = FakeDataStore.new
   @app        = ApplicationRunner.new
   @auth       = FakeGithubAuth.new
+
+  MongoConnection.setup(
+    host: 'localhost',
+    port: '27017',
+    database: 'codearena-test'
+  )
 end
