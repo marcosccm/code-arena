@@ -29,6 +29,10 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
+    backports (2.6.7)
+    bson (1.8.5)
+    bson_ext (1.8.5)
+      bson (~> 1.8.5)
     builder (3.0.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -63,6 +67,7 @@ GEM
       debugger-ruby_core_source (~> 1.2.0)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
+    descendants_tracker (0.0.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -106,6 +111,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    mongo (1.8.5)
+      bson (~> 1.8.5)
     multi_json (1.7.2)
     multipart-post (1.2.0)
     nokogiri (1.5.9)
@@ -203,6 +210,9 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    virtus (0.5.4)
+      backports (~> 2.6.1)
+      descendants_tracker (~> 0.0.1)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -212,6 +222,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext
   capybara
   coffee-rails (~> 3.2.1)
   cucumber-rails
@@ -220,6 +231,7 @@ DEPENDENCIES
   jasmine
   jasmine-headless-webkit
   jquery-rails
+  mongo
   omniauth
   omniauth-github
   poltergeist
@@ -229,3 +241,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)
+  virtus

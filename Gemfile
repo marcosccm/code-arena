@@ -15,6 +15,9 @@ gem 'pygments.rb'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'debugger'
+gem 'mongo'
+gem 'bson_ext'
+gem 'virtus'
 
 group :test, :development do
   gem 'cucumber-rails', :require => false
