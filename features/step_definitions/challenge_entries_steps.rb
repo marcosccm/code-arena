@@ -1,5 +1,5 @@
 Given /^many entries for that challenge$/ do
-  author = OpenStruct.new(nickname: 'marcosccm')
+  author = @auth.current_user
   entries = [
     { description: 'entry1', language: 'Ruby', content: 'bla1', author: author },
     { description: 'entry2', language: 'Python', content: 'bla2', author: author },

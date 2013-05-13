@@ -6,7 +6,8 @@ class CreateUserSession
   end
 
   def run
-    user = @builder.find_or_create(@auth_data[:info])
+    user_data = @auth_data[:info]
+    user = @builder.find_by_nickname(user_data[:nickname]) || @builder.create(user_data)
     @caller.session_created(user)
   end
 end

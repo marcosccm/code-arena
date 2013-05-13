@@ -1,5 +1,5 @@
+require_relative '../../app/models/github_users'
 require_relative '../../app/models/entry_builder'
-require_relative '../../app/models/current_challenge'
 require_relative '../../app/models/challenge_entries'
 
 class FakeDataStore

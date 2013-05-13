@@ -74,7 +74,7 @@ class EntriesRunner
         @driver.page.should have_content entry[:description]
         @driver.page.should have_content entry[:language]
         @driver.page.should have_content entry[:raw]
-        @driver.page.should have_content entry[:author] if entry[:author]
+        @driver.page.should have_content entry[:author].nickname if entry[:author]
       end
     end
   end
@@ -121,13 +121,13 @@ class LoginRunner
 
   def shows_user_details(user)
     current_user_section do
-      @driver.page.should have_content user
+      @driver.page.should have_content user.nickname
     end
   end
 
   def do_not_show_user_details(user)
     current_user_section do
-      @driver.page.should_not have_content user
+      @driver.page.should_not have_content user.nickname
       @driver.page.should have_content 'Github'
     end
   end

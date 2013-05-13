@@ -1,1 +1,6 @@
-class User < Struct.new(:nickname); end
+class User 
+  include Virtus
+
+  attribute :nickname, String
+end
+
