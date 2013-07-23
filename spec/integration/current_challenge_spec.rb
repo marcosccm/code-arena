@@ -6,8 +6,8 @@ describe CurrentChallenge do
       CurrentChallenge.setup('bla', 'blu')
       current = CurrentChallenge.current
 
-      current.title.should == 'bla'
-      current.content.should == 'blu'
+      expect(current.title).to eq 'bla'
+      expect(current.content).to eq 'blu'
     end
   end
 
@@ -17,8 +17,8 @@ describe CurrentChallenge do
       CurrentChallenge.update(title: 'new bla', content: 'new blu')
       current = CurrentChallenge.current
 
-      current.title.should == 'new bla'
-      current.content.should == 'new blu'
+      expect(current.title).to eq 'new bla'
+      expect(current.content).to eq 'new blu'
     end
   end
 end

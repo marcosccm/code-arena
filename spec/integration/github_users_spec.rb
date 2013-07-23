@@ -6,14 +6,14 @@ describe GithubUsers do
       it 'returns existing user' do
         GithubUsers.create(nickname: 'marcosccm')
         user = GithubUsers.find_by_nickname('marcosccm')
-        user.nickname.should == 'marcosccm'
+        expect(user.nickname).to eq 'marcosccm'
       end
     end
 
     context 'when the user does not exist' do
       it 'returns nil' do
         user = GithubUsers.find_by_nickname('marcosccm')
-        user.should == nil
+        expect(user).to eq nil
       end
     end
   end

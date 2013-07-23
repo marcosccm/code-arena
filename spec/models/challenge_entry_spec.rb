@@ -12,14 +12,14 @@ describe ChallengeEntry do
 
     it 'changes the content' do
       entry.add_highlight(highlighted_code)
-      entry.content.should == highlighted_code
+      expect(entry.content).to eq(highlighted_code)
     end
   end
 
   describe 'authors name' do
     it 'returns the nickname of the author'do
       entry.author = User.new(nickname: 'someone')
-      entry.author_name.should == 'someone'
+      expect(entry.author_name).to eq('someone')
     end
   end
 end

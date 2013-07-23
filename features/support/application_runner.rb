@@ -33,7 +33,7 @@ class ApplicationRunner
   end
 
   def shows_success_message(msg)
-    @driver.page.should have_content(msg)
+    expect(@driver.page).to have_content(msg)
   end
 end
 
@@ -46,8 +46,8 @@ class ChallengeRunner
   end
 
   def shows_challenge(challenge)
-    @driver.page.should have_content challenge[:title]
-    @driver.page.should have_content challenge[:content]
+    expect(@driver.page).to have_content challenge[:title]
+    expect(@driver.page).to have_content challenge[:content]
   end
 
   def edit_challenge(title, content)
@@ -67,14 +67,14 @@ class EntriesRunner
   end
 
   def shows_challenge_entries(entries)
-    entries.count.should > 0
+    expect(entries.count).to > 0
     
     entries.each do |entry|
       @driver.within('#current-entries') do
-        @driver.page.should have_content entry[:description]
-        @driver.page.should have_content entry[:language]
-        @driver.page.should have_content entry[:raw]
-        @driver.page.should have_content entry[:author].nickname if entry[:author]
+        expect(@driver.page).to have_content entry[:description]
+        expect(@driver.page).to have_content entry[:language]
+        expect(@driver.page).to have_content entry[:raw]
+        expect(@driver.page).to have_content entry[:author].nickname if entry[:author]
       end
     end
   end
@@ -121,19 +121,18 @@ class LoginRunner
 
   def shows_user_details(user)
     current_user_section do
-      @driver.page.should have_content user.nickname
+      expect(@driver.page).to have_content user.nickname
     end
   end
 
   def do_not_show_user_details(user)
     current_user_section do
-      @driver.page.should_not have_content user.nickname
-      @driver.page.should have_content 'Github'
+      expect(@driver.page).to_not have_content user.nickname
+      expect(@driver.page).to have_content 'Github'
     end
   end
 
   def current_user_section 
     @driver.within('#current-user-info') { yield }
   end
-
 end

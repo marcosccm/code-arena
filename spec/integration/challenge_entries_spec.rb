@@ -4,7 +4,7 @@ describe ChallengeEntries do
   it 'can persist challenge entries' do
     entry = ChallengeEntry.new
     ChallengeEntries.submit(entry)
-    ChallengeEntries.entries.count.should == 1
+    expect(ChallengeEntries.entries.count).to eq 1
   end
 
   it 'persits all entry fields correclty' do
@@ -19,10 +19,10 @@ describe ChallengeEntries do
     ChallengeEntries.submit(entry)
     entry = ChallengeEntries.entries.first
 
-    entry.description.should == 'something'
-    entry.language.should == 'ruby'
-    entry.raw.should == '<>'
-    entry.content.should == 'something'
-    entry.author.nickname.should == 'marcos'
+    expect(entry.description).to eq 'something'
+    expect(entry.language).to eq 'ruby'
+    expect(entry.raw).to eq '<>'
+    expect(entry.content).to eq 'something'
+    expect(entry.author.nickname).to eq 'marcos'
   end
 end
