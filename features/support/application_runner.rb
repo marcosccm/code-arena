@@ -67,7 +67,7 @@ class EntriesRunner
   end
 
   def shows_challenge_entries(entries)
-    expect(entries.count).to > 0
+    expect(entries.count).to be > 0
     
     entries.each do |entry|
       @driver.within('#current-entries') do
