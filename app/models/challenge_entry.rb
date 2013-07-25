@@ -1,7 +1,6 @@
 class ChallengeEntry 
   include Virtus
 
-  attribute :description, String
   attribute :language, String
   attribute :content, String
   attribute :raw, String

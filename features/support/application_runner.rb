@@ -71,7 +71,6 @@ class EntriesRunner
     
     entries.each do |entry|
       @driver.within('#current-entries') do
-        expect(@driver.page).to have_content entry[:description]
         expect(@driver.page).to have_content entry[:language]
         expect(@driver.page).to have_content entry[:raw]
         expect(@driver.page).to have_content entry[:author].nickname if entry[:author]
@@ -81,7 +80,6 @@ class EntriesRunner
 
   def submit_challenge_entry(entry)
     @driver.click_on('Add Your Entry!') 
-    @driver.fill_in('description', :with => entry[:description])
     @driver.select(entry[:language], :from => 'language')
     @code_editor.fill(entry[:content])
     @driver.click_on('Submit') 

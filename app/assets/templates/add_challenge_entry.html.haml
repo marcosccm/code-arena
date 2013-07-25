@@ -3,8 +3,6 @@
     %h3 Add an entry!
   %section
     %form
-      %label{ :for => 'description' } Description
-      %input{ :type => 'text', :placeholder => 'Description', :id => 'description', 'ng-model' => 'entry.description' }
       %label{ :for => 'language' } Language
       %select{ :name => 'language', 'ng-model' => 'entry.language', 'ng-change' => 'changeLanguage()' }
         %option{ :value => '', :disabled => 'disabled' }

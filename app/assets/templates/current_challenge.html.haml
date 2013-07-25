@@ -9,7 +9,6 @@
     %h3 Current Entries
   %section
     %article{ 'ng-repeat' => 'entry in entries' }
-      %p {{ entry.description }} ({{ entry.language }})
-      %p by {{ entry.author.nickname }} 
+      %p Entry in {{ entry.language }} by {{ entry.author.nickname }} 
       %p{ 'ng-bind-html-unsafe' => 'entry.content' }
     %a{ :href => '#/new' } Add Your Entry!
