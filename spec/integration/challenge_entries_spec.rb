@@ -9,7 +9,6 @@ describe ChallengeEntries do
 
   it 'persits all entry fields correclty' do
     entry = ChallengeEntry.new(
-      :description => 'something',
       :language => 'ruby',
       :raw => '<>',
       :content => 'something',
@@ -19,7 +18,6 @@ describe ChallengeEntries do
     ChallengeEntries.submit(entry)
     entry = ChallengeEntries.entries.first
 
-    expect(entry.description).to eq 'something'
     expect(entry.language).to eq 'ruby'
     expect(entry.raw).to eq '<>'
     expect(entry.content).to eq 'something'
