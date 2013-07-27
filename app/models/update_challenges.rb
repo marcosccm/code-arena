@@ -1,6 +1,8 @@
-class UpdateChallenges < Struct.new(:data, :challenge, :ui)
+class UpdateChallenges < Struct.new(:data, :challenges, :ui)
   def run
-    challenge.update(data)
+    challenge = challenges.current
+    challenges.update(challenge)
     ui.challenge_updated
   end
 end
+
