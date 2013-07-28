@@ -32,6 +32,10 @@ class ApplicationRunner
     @driver.visit('/')
   end
 
+  def visit_previous_challenges
+    @driver.click_on "Previous Challenges"
+  end
+
   def shows_success_message(msg)
     expect(@driver.page).to have_content(msg)
   end
@@ -45,9 +49,11 @@ class ChallengeRunner
     @code_editor = CodeEditor.new(@driver)
   end
 
-  def shows_challenge(challenge)
-    expect(@driver.page).to have_content challenge[:title]
-    expect(@driver.page).to have_content challenge[:content]
+  def shows_challenge(*challenges)
+    challenges.each do |challenge|
+      expect(@driver.page).to have_content challenge.title
+      expect(@driver.page).to have_content challenge.content
+    end
   end
 
   def edit_challenge(title, content)

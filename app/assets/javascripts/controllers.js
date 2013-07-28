@@ -14,6 +14,13 @@ var CurrentChallengeCrtl = [
   }
 ];
 
+var PreviousChallengesCrtl = [
+ '$scope', 'previousApi',
+  function($scope, challengeApi) {
+    $scope.challenges = challengeApi.query();
+  }
+];
+
 var EditChallengeCrtl = [
   '$scope', 'challengeApi', 'notificationCenter', '$location', 'editor',
   function($scope, challengeApi, notificationCenter, $location, editor) {

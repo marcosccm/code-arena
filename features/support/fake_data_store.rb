@@ -27,8 +27,8 @@ class FakeDataStore
   end
 
   def create_challenge(index)
-    challenge = Challenge.new(name: "Challenge #{index}", body: "Body #{index}")
-    Challenge.add(challenge)
+    challenge = Challenge.new(title: "Challenge #{index}", content: "Body #{index}")
+    challenges.add(challenge)
   end
 
   def set_current_entries(entries)

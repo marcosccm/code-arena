@@ -33,6 +33,15 @@ var ChallengeApi = [
   }
 ];
 
+var PreviousApi = [
+  '$resource',
+  function($resource) {
+    return $resource('previous_challenges', {}, {
+      query: { method: 'GET', isArray: true }
+    });
+  }
+];
+
 var Editor = [
   '$rootScope',
   function($rootScope) {
@@ -70,4 +79,5 @@ angular.module('entryService', ['ngResource'])
        .factory('entryApi', EntryApi)
        .factory('editor', Editor)
        .factory('challengeApi', ChallengeApi)
+       .factory('previousApi', PreviousApi)
        .factory('notificationCenter', NotificationCenter);

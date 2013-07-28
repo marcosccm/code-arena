@@ -6,6 +6,10 @@ var CodeArena = [
       controller: CurrentChallengeCrtl, 
       templateUrl: '<%= asset_path('current_challenge.html') %>'
     })
+    .when('/previous_challenges', { 
+      controller: PreviousChallengesCrtl, 
+      templateUrl: '<%= asset_path('previous_challenges.html') %>'
+    })
     .when('/edit', { 
       controller: EditChallengeCrtl, 
       templateUrl: '<%= asset_path('edit_challenge.html') %>'
