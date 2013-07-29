@@ -5,8 +5,9 @@ class SubmitEntries
     @builder = builder
   end
 
-  def submit(entry_params, user)
+  def submit(entry_params, user, challenge)
     entry = @builder.build(entry_params.merge(author: user))
+    entry.associate_challenge(challenge)
     @entries.submit(entry)
     @ui.entry_submited
   end

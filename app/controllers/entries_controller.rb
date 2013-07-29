@@ -7,10 +7,16 @@ class EntriesController < ApplicationController
   end
 
   def create
-    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry], current_user)
+    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry], current_user, current_challenge)
   end
 
   def entry_submited
     render :json => { 'message' => 'entry submited successfully' }
+  end
+
+  private
+
+  def current_challenge
+    Challenges.new.current
   end
 end
