@@ -6,28 +6,28 @@ class ChallengeEntrySerializer
 end
 
 class ChallengeEntries
-  def self.submit(entry)
+  def initialize
+    @collection = MongoConnection.collection('challenge_entries')
+    @serializer = ChallengeEntrySerializer.new
+  end
+
+  def submit(entry)
     collection.insert(serializer.to_hash(entry))
   end
 
-  def self.current
-    entries.map(&:to_hash)
+  def for_challenge(challenge)
+    map_to_entries collection.find(challenge_id: challenge.id)
   end
 
-  def self.entries 
-    collection.find.map do |raw| 
-      ChallengeEntry.new(raw)
-    end
+  def all 
+    map_to_entries collection.find
   end
 
   private
 
-  def self.serializer
-    ChallengeEntrySerializer.new
-  end
+  attr_reader :serializer, :collection
 
-  def self.collection
-    MongoConnection.collection('challenge_entries')
+  def map_to_entries(results)
+    results.map { |raw| ChallengeEntry.new(raw) }
   end
 end
-

@@ -5,7 +5,7 @@ class ChallengeEntry
   attribute :content, String
   attribute :raw, String
   attribute :author, User
-  attribute :challenge_id, BSON::ObjectId, writer: :private
+  attribute :challenge_id, String
 
   def add_highlight(highlighted_content)
     @content = highlighted_content

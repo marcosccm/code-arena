@@ -6,11 +6,12 @@ require_relative '../../app/models/challenge'
 require_relative '../../app/models/challenges'
 
 class FakeDataStore
-  attr_reader :challenges
+  attr_reader :challenges, :entries
 
   def initialize
     @entry_builder = EntryBuilder.new
     @challenges = Challenges.new
+    @entries = ChallengeEntries.new
   end
 
   def set_current_challenge
@@ -31,12 +32,16 @@ class FakeDataStore
     challenges.add(challenge)
   end
 
-  def set_current_entries(entries)
-    entries.each { |entry| ChallengeEntries.submit(@entry_builder.build(entry)) }
+  def set_current_entries(entries_hash)
+    entries_hash.each do |entry_hash| 
+      entry = @entry_builder.build(entry_hash)
+      entry.associate_challenge(current_challenge)
+      entries.submit(entry) 
+    end
   end
 
   def current_entries
-    ChallengeEntries.current
+    entries.for_challenge(current_challenge)
   end
 end
 

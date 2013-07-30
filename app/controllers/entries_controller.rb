@@ -2,12 +2,11 @@ class EntriesController < ApplicationController
   respond_to :json
 
   def index
-    entries = ChallengeEntries.current
-    render :json => entries
+    render :json => current_entries
   end
 
   def create
-    SubmitEntries.new(ChallengeEntries, self).submit(params[:entry], current_user, current_challenge)
+    SubmitEntries.new(ChallengeEntries.new, self).submit(params[:entry], current_user, current_challenge)
   end
 
   def entry_submited
@@ -15,6 +14,10 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def current_entries
+    ChallengeEntries.new.for_challenge(current_challenge)
+  end
 
   def current_challenge
     Challenges.new.current
