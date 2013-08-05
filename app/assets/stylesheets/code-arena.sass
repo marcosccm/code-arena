@@ -1,47 +1,104 @@
-@import 'bootstrap'
-#main-content
-  width: 900px
-  margin: 0 auto
+$darkGray: #45484B
+$cream: #EFE6D5
+$white: #EEEFFF
+$brightRed: #CF4647
+$darkRed: darken($brightRed, 10)
+$brightOrange: #EB7B59
+$darkOrange: darken($brightOrange, 10)
 
-  header h1
-    font-size: 26px
-    color: $grayLight
-    text-align: center
-    margin-bottom: 40px
+body
+  font-family: 'Helvetica Neue', sans-serif
+  font-size: 21px
+  color: $darkGray
+  background-color: $white
+  text-rendering: optimizeLegibility
+  margin: 0
+
+h1, h2, h3, p
+  font-family: 'Open Sans', sans-serif
+
+h3
+  color: $white
+
+a
+  text-decoration: none
+  color: $darkGray
+
+p
+  line-height: 1.7
+  margin: 1em 0
+
+
+header#topbar
+  height: 55px
+  margin-bottom: 84px
+  border-top: solid 4px $darkRed
+  background-color: $cream
+
+  #title
+    float: left
+    line-height: 55px
+    margin-left: 33px
+    font-size: 1.52em
+
+  #menu
+    float: right
+    line-height: 55px
+    font-size: 0.9em
+    a
+      margin-right: 33px
 
 
 #challenge-week
-  margin: 20px 0
-  header 
+  header.title
+    margin-bottom: 84px
+    text-align: center
     h3
-      font-weight: 200
+      .tag
+        font-size: 1.52em
+        position: relative
+        background-color: $brightRed
+        display: inline-block
+        line-height: 44px
+        &:before, &:after
+          content: " "
+          top: 0
+          position: absolute
+          border-top: 22px solid transparent
+          border-bottom: 22px solid transparent
+        &:before
+          left: -20px
+          border-right: 20px solid $brightRed
+        &:after
+          right: -20px
+          border-left: 20px solid $brightRed
     h2
+      color: $darkRed
       font-size: 4em
-  section 
-    margin: 40px 0 
-    
-    p
-      line-height: 30px
-      font-size: 1.2em
-      font-weight: 200
-  article
+      margin: 33px 0
+      letter-spacing: -2px
+
+  #current-content
+    width: 986px
     margin: 0 auto
-    width: 500px
-  form
-    label
-      font-size: 20px
-      font-weight: 700
-    input, textarea, select
-      width: 485px
-      margin-bottom: 30px
-    
+    margin-bottom: 84px
+
+    a.add-button
+      width: 220px
+      margin: 84px auto
+      line-height: 2.2
+      text-align: center
+      background-color: $brightRed
+      display: block
+      color: $white
+      border-radius: 3px
+      box-shadow: 0 4px 0 0 $darkRed
 
 #current-entries
-  margin: 20px 0
+  background-color: $brightOrange
+  border-top: solid 4px $darkOrange
+  height: 300px
 
-  #add-challenge
-    margin: 20px 0
-
-#editor
-  height: 500px
-  position: relative
+  h3
+    text-align: center
+    font-size: 1.6em

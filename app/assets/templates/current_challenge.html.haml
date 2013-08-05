@@ -1,14 +1,15 @@
-%header
-  %h3 Challenge of the Week
-  %h2 {{challenge.title}}
-%section
+%header.title
+  %h2 Building {{challenge.title}}
+  %h3
+    %span.tag coding challenge of the week
+%section#current-content
   %p  {{challenge.content}}
-  %a{ :href => '#/edit' } Edit
+  %a{ :href => '#/edit', :style => 'float:left' } Edit
+  %a.add-button{ :href => '#/new' } Add Your Entry!
 %section#current-entries{ 'ng-controller' => 'EntryListCrtl' }
   %header
-    %h3 Current Entries
+    %h3 The Current Contenders
   %section
     %article{ 'ng-repeat' => 'entry in entries' }
       %p Entry in {{ entry.language }} by {{ entry.author.nickname }} 
       %p{ 'ng-bind-html-unsafe' => 'entry.content' }
-    %a{ :href => '#/new' } Add Your Entry!

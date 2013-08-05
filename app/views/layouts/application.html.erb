@@ -11,12 +11,23 @@
   </style>
 </head>
 <body>
+  <header id='topbar'>
+    <section id='title'>
+      <a href='#/'>Code Arena</a>
+    </section>
+
+    <section id='menu'>
+      <% if current_user %>
+        <%= current_user.nickname %>
+        <%= link_to 'Logout', 'auth/logout' %>
+      <% else %>
+        <%= link_to 'Login', 'auth/github' %>
+      <% end %>
+      <a href="#/previous_challenges"> Previous Challenges</a>
+    </section>
+  </header>
+
   <section id='main-content'>
-    <header>
-      <h1>
-        <a href='#/'>Code Arena</a>
-      </h1>
-    </header>
     <%= yield %>
   </section>
 </body>
