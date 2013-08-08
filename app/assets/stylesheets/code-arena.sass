@@ -3,11 +3,22 @@ $cream: #EFE6D5
 $white: #EEEFFF
 $brightRed: #CF4647
 $darkRed: darken($brightRed, 10)
+$redShadow: fade-out($darkRed, 0.5)
 $brightOrange: #EB7B59
 $darkOrange: darken($brightOrange, 10)
+$brown: #AD9383
+
+@mixin box-button($color)
+  line-height: 2.2
+  text-align: center
+  background-color: $color
+  color: $white
+  border-radius: 3px
+  box-shadow: 0 4px 0 0 darken($color, 10)
+
 
 body
-  font-family: 'Helvetica Neue', sans-serif
+  font-family: 'Roboto', sans-serif
   font-size: 21px
   color: $darkGray
   background-color: $white
@@ -15,7 +26,7 @@ body
   margin: 0
 
 h1, h2, h3, p
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Roboto Slab', sans-serif
 
 h3
   color: $white
@@ -27,6 +38,11 @@ a
 p
   line-height: 1.7
   margin: 1em 0
+  font-family: 'Quattrocento'
+
+footer
+  min-height: 88px
+  background-color: $brown
 
 
 header#topbar
@@ -34,6 +50,7 @@ header#topbar
   margin-bottom: 84px
   border-top: solid 4px $darkRed
   background-color: $cream
+  box-shadow: 0 1px 1px rgba(0,0,0,0.4)
 
   #title
     float: left
@@ -44,8 +61,10 @@ header#topbar
   #menu
     float: right
     line-height: 55px
-    font-size: 0.9em
+    margin-right: 84px
     a
+      font-weight: 600
+      font-size: 0.6em
       margin-right: 33px
 
 
@@ -60,6 +79,8 @@ header#topbar
         background-color: $brightRed
         display: inline-block
         line-height: 44px
+        box-shadow: 0 1px 1px $redShadow
+        font-weight: 300
         &:before, &:after
           content: " "
           top: 0
@@ -84,15 +105,9 @@ header#topbar
     margin-bottom: 84px
 
     a.add-button
-      width: 220px
-      margin: 84px auto
-      line-height: 2.2
-      text-align: center
-      background-color: $brightRed
+      @include box-button($brightRed)
       display: block
-      color: $white
-      border-radius: 3px
-      box-shadow: 0 4px 0 0 $darkRed
+      margin: 84px auto
 
 #current-entries
   background-color: $brightOrange
@@ -102,3 +117,24 @@ header#topbar
   h3
     text-align: center
     font-size: 1.6em
+
+#add-challenge
+  width: 986px
+  margin: 0 auto
+  margin-bottom: 84px
+  color: $darkRed
+  select, textarea
+    margin-bottom: 52px
+  label
+    display: block
+  .form-actions span
+    @include box-button($brightRed)
+    display: inline-block
+
+  header
+    h3
+      color: $darkRed
+#editor
+  height: 500px
+  position: relative
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Quattrocento|Roboto)
