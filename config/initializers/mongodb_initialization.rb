@@ -1,7 +1,7 @@
 MongoConnection.setup(
-  host: ENV['MONGO_HOST'] || 'localhost',
-  port: ENV['MONGO_PORT'] || '27017',
-  database: ENV['MONGO_DATABASE'] || 'code-arena',
+  host: ENV['MONGO_HOST'],
+  port: ENV['MONGO_PORT'],
+  database: ENV['MONGO_DATABASE'],
   user: ENV['MONGO_USER'],
   password: ['MONGO_PASSWORD']
 )

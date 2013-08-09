@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/.env
 
 /.jhw-cache
 /config/github_keys.yml
