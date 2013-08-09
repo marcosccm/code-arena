@@ -4,6 +4,9 @@ class MongoConnection
   def self.setup(configuration)
     client = MongoClient.new(configuration.fetch(:host), configuration.fetch(:port))
     @db    = client[configuration.fetch(:database)]
+    if configuration[:user]
+      @db.authenticate(configuration[:user], configuration[:password])
+    end
   end
 
   def self.collection(coll_name)
