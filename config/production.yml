@@ -1,0 +1,3 @@
+MONGO_HOST: 'ds037698.mongolab.com'
+MONGO_PORT: '37698'
+MONGO_DATABASE: 'heroku_app8687179'
