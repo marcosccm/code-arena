@@ -8,7 +8,7 @@ class Configuration
   private
 
   def config
-    @config ||= YAML.load_file(config_file_location)
+    @config ||= YAML.load_file(config_file_location) || {}
   end
 
   def config_file_location
