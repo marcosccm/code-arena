@@ -1,8 +1,10 @@
+config = Configuration.new
+
 MongoConnection.setup(
-  host: ENV['MONGO_HOST'],
-  port: ENV['MONGO_PORT'],
-  database: ENV['MONGO_DATABASE'],
-  user: ENV['MONGO_USER'],
-  password: ['MONGO_PASSWORD']
+  host: config['MONGO_HOST'],
+  port: config['MONGO_PORT'],
+  database: config['MONGO_DATABASE'],
+  user: config['MONGO_USER'],
+  password: config['MONGO_PASSWORD']
 )
 
