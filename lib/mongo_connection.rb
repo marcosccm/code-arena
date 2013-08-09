@@ -5,7 +5,7 @@ class MongoConnection
     client = MongoClient.new(configuration.fetch(:host), configuration.fetch(:port))
     @db    = client[configuration.fetch(:database)]
     if configuration[:user]
-      @db.authenticate(configuration[:user])
+      @db.authenticate(configuration[:user], configuration[:password])
     end
   end
 
