@@ -16,6 +16,7 @@ gem 'debugger'
 gem 'mongo'
 gem 'bson_ext'
 gem 'virtus'
+gem 'dotenv'
 
 group :test, :development do
   gem 'cucumber-rails', :require => false
