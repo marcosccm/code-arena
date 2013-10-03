@@ -1,11 +1,12 @@
 $darkGray: #45484B
 $cream: #EFE6D5
-$white: #EEEFFF
+$white: #FFF
 $brightRed: #CF4647
 $darkRed: darken($brightRed, 10)
 $redShadow: fade-out($darkRed, 0.5)
 $brightOrange: #EB7B59
 $darkOrange: darken($brightOrange, 10)
+$shadow: rgba(0,0,0,0.1)
 $brown: #AD9383
 
 @mixin box-button($color)
@@ -21,7 +22,6 @@ body
   font-family: 'Roboto', sans-serif
   font-size: 21px
   color: $darkGray
-  background-color: $white
   text-rendering: optimizeLegibility
   margin: 0
 
@@ -112,11 +112,17 @@ header#topbar
 #current-entries
   background-color: $brightOrange
   border-top: solid 4px $darkOrange
-  height: 300px
+  min-height: 300px
 
   h3
     text-align: center
     font-size: 1.6em
+
+  article
+    background-color: $shadow
+    margin: 52px
+    padding: 20px
+
 
 #add-challenge
   width: 986px
