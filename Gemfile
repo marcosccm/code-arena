@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 
 gem 'rails', '4.0'
 gem 'thin' 
@@ -12,7 +12,6 @@ gem 'jquery-rails'
 gem 'pygments.rb'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'debugger'
 gem 'mongo'
 gem 'bson_ext'
 gem 'virtus'
