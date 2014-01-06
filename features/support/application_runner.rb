@@ -113,13 +113,13 @@ class LoginRunner
 
   def login_with_github
     current_user_section do
-      @driver.click_on 'Github!'
+      @driver.click_on 'Login'
     end
   end
 
   def logout
     current_user_section do
-      @driver.click_on 'Sair!'
+      @driver.click_on 'Logout'
     end
   end
 
@@ -132,7 +132,7 @@ class LoginRunner
   def do_not_show_user_details(user)
     current_user_section do
       expect(@driver.page).to_not have_content user.nickname
-      expect(@driver.page).to have_content 'Github'
+      expect(@driver.page).to have_content 'Login'
     end
   end
 

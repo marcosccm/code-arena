@@ -16,12 +16,14 @@
     </section>
 
     <section id='menu'>
-      <% if current_user %>
-        <%= current_user.nickname %>
-        <%= link_to 'Logout', 'auth/logout' %>
-      <% else %>
-        <%= link_to 'Login', 'auth/github' %>
-      <% end %>
+      <div id="current-user-info">
+        <% if current_user %>
+            <%= current_user.nickname %>
+            <%= link_to 'Logout', 'auth/logout' %>
+        <% else %>
+          <%= link_to 'Login', 'auth/github' %>
+        <% end %>
+      </div>
       <a href="#/previous_challenges"> Previous Challenges</a>
     </section>
   </header>
