@@ -6,6 +6,7 @@ class SubmitEntries
   end
 
   def submit(entry_params, user, challenge)
+    user = user || User.anonymous
     entry = @builder.build(entry_params.merge(author: user))
     entry.associate_challenge(challenge)
     @entries.submit(entry)

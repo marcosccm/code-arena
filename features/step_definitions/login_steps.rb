@@ -1,10 +1,14 @@
-When /^I log in with my github account$/ do
+Given /^I am a logged user$/ do
   @auth.mock_auth(nickname: 'testuser')
   @app.visit_home_page
   @app.login_with_github
 end
 
-Given /^I am a logged user$/ do
+Given /^I am not a logged user$/ do
+  @auth.mock_anonymous_user
+end
+
+When /^I log in with my github account$/ do
   @auth.mock_auth(nickname: 'testuser')
   @app.visit_home_page
   @app.login_with_github

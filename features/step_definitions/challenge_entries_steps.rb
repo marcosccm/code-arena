@@ -25,5 +25,12 @@ Then /^I should see my challenge entry$/ do
   @app.shows_success_message('entry submited successfully')
 
   my_entry = @data_store.current_entries.last
-  @app.shows_challenge_entries([my_entry.to_hash.merge(author: @auth.current_user)])
+  @app.shows_challenge_entries([my_entry.to_hash.merge(author: @auth.current_user.nickname)])
+end
+
+Then /^I should see an anonymous challenge entry$/ do
+  @app.shows_success_message('entry submited successfully')
+
+  my_entry = @data_store.current_entries.last
+  @app.shows_challenge_entries([my_entry.to_hash.merge(author: @auth.current_user.nickname)])
 end

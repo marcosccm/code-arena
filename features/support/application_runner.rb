@@ -79,7 +79,7 @@ class EntriesRunner
       @driver.within('#current-entries') do
         expect(@driver.page).to have_content entry[:language]
         expect(@driver.page).to have_content entry[:raw]
-        expect(@driver.page).to have_content entry[:author].nickname if entry[:author]
+        expect(@driver.page).to have_content entry[:author]
       end
     end
   end
